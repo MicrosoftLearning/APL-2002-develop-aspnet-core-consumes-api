@@ -1,6 +1,6 @@
 ---
 lab:
-    title: 'Lab: Test change'
+    title: 'Lab 01: Test change'
     module: 'Module 1: Exploring Azure Resource Manager'
 ---
 
