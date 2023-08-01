@@ -1,6 +1,6 @@
 # INF99X: Sample Course
 
-Looking for the **[HTML pages](https://microsoftlearning.github.io/Develop-ASPNET-Core-Consumes-API/)**?
+Looking for the **[HTML pages](https://microsoftlearning.github.io/develop-aspnet-core-consumes-api/)**?
 
 **Are you an MCT?** - Have a look at our [GitHub User Guide for MCTs](https://microsoftlearning.github.io/MCT-User-Guide/)
 
