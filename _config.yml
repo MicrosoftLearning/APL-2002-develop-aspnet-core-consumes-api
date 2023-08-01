@@ -1,3 +1,4 @@
+title: 'Develop an ASP.NET Core app that consumes an API'
 remote_theme: MicrosoftLearning/Jekyll-Theme
 exclude:
   - readme.md
