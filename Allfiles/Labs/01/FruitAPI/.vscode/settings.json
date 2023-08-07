@@ -1,0 +1,6 @@
+{
+    "dotnet.defaultSolution": "FruitAPI.sln",
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "bin\\Release\\net7.0\\publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/f96a9123-9b5a-4e58-aa99-4771f18a9a95/resourceGroups/api-rg/providers/Microsoft.Web/sites/api-fruit"
+}
