@@ -1,6 +1,7 @@
 ---
 lab:
     title: 'Exercise: Discover and interact with an API'
+    module: 'Module: Explore ASP.NET Core APIs'
 ---
 
 # Exercise: Discover and interact with an API
