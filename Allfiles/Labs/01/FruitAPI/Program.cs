@@ -12,7 +12,6 @@ builder.Services.AddSwaggerGen(options =>
         Version = "v1",
         Title = "Fruit API",
         Description = "API for managing a list of fruit their stock status.",
-        TermsOfService = new Uri("https://example.com/terms")
     });
 });
 var app = builder.Build();
