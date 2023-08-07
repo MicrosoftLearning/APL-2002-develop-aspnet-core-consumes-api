@@ -1,12 +1,28 @@
 ---
 lab:
-    title: 'Lab: Deploying Azure Resource Manager templates'
-    type: 'Answer Key'
-    module: 'Module 1: Exploring Azure Resource Manager'
+    title: 'Exercise: Discover and interact with an API'
 ---
 
 # Lab: Deploying Azure Resource Manager templates
-# Student lab answer key
+# Student lab manual
+
+## Lab scenario
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lobortis, erat vel egestas faucibus, dui magna semper velit, id congue sapien lectus id turpis. Nam egestas tempus enim. Ut venenatis vehicula ex, id rutrum odio lacinia at. Donec congue, tortor sed fermentum imperdiet, mauris mi auctor dui, ac cursus ex augue a odio. Aliquam erat volutpat. Vivamus faucibus fringilla augue in dignissim. Quisque sit amet nulla id risus gravida auctor. Ut in est varius, cursus odio rhoncus, placerat erat. Suspendisse nec metus est.
+
+## Objectives
+
+After you complete this lab, you will be able to:
+
+- Cras tincidunt massa et nunc vulputate, eget vestibulum massa tincidunt. 
+
+- Maecenas suscipit at nisl vitae malesuada. 
+
+- Suspendisse eu arcu id velit consequat venenatis.
+
+## Lab Setup
+
+  - **Estimated Time**: 00 minutes
 
 ## Instructions
 
