@@ -1,0 +1,23 @@
+name: FruitAPI
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - Allfiles/Labs/01/FruitAPI/**
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  create_zip:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - uses: actions/upload-artifact@v3
+      with:
+        name: FruitAPI
+        path: Allfiles/Labs/01/FruitAPI/**
