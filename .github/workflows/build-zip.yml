@@ -18,13 +18,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Create Fruit zip
-      run: zip -r -q ./Allfiles/Downloads/FruitAPI.zip FruitAPI/*
-      working-directory: ./Allfiles/Labs/01/
-    - name: Commit and push
-      uses: Endbug/add-and-commit@v7
-      with:
-        add: '["Allfiles/Downloads/FruitAPI.zip"]'
-        message: 'Updating link to API'
-        push: true
+      run: | 
+        cd ./Allfiles/Labs/01
+        zip -r -q FruitAPI.zip FruitAPI/*
+#    - name: Commit and push
+#      uses: Endbug/add-and-commit@v7
+#      with:
+#        add: '["Allfiles/Downloads/FruitAPI.zip"]'
+#        message: 'Updating link to API'
+#        push: true
     
   
