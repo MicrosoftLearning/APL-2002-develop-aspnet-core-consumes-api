@@ -9,6 +9,8 @@ lab:
 ## Lab scenario
 
 
+* [Download the FruiAPI](https://github.com/MicrosoftLearning/develop-aspnet-core-consumes-api/blob/master/Allfiles/Downloads/FruitAPI.zip) code
+
 ## Objectives
 
 After you complete this lab, you will be able to:
