@@ -22,7 +22,7 @@ jobs:
         name: FruitAPI
         path: Allfiles/Labs/01/FruitAPI/**
     - name: Copy archive to Downloads
-      uses: actions/upload-artifact@v3
+      uses: actions/download-artifact@v3
       with:
         name: FruitAPI
         path: Allfiles/Downloads/FruitAPI.zip
