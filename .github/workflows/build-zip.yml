@@ -22,7 +22,7 @@ jobs:
     - name: Commit and push
       uses: Endbug/add-and-commit@v7
       with:
-        add: '["FruitAPI.zip"]'
+        add: '["Allfiles/Downloads/FruitAPI.zip"]'
         message: 'Updating link to API'
         push: true
     
