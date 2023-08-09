@@ -18,7 +18,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Create Fruit zip
-      working-directory: Allfiles/Labs/01/FruitAPI
+      working-directory: ./Allfiles/Labs/01/FruitAPI
       run: zip -r -q Allfiles/Downloads/FruitAPI.zip *
     - name: Commit and push
       uses: Endbug/add-and-commit@v7
