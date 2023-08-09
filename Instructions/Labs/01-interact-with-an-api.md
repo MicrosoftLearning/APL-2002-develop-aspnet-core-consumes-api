@@ -9,7 +9,7 @@ lab:
 ## Lab scenario
 
 
-* [Download the FruiAPI](https://github.com/MicrosoftLearning/develop-aspnet-core-consumes-api/blob/master/Allfiles/Downloads/FruitAPI.zip) code
+* [Download the FruitAPI](https://github.com/MicrosoftLearning/develop-aspnet-core-consumes-api/raw/master/Allfiles/Downloads/FruitAPI.zip) code
 
 ## Objectives
 
