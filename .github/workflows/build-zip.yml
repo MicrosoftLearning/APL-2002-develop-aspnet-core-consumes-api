@@ -23,6 +23,5 @@ jobs:
         path: Allfiles/Labs/01/FruitAPI/**
     - uses: actions/download-artifact@v3
       with:
-        name: FruitAPI.zip
-        path: Allfiles/Downloads/**
+        path: Allfiles/Downloads
   
