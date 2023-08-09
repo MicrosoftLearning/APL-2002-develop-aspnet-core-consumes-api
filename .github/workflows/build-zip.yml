@@ -19,6 +19,6 @@ jobs:
       uses: actions/checkout@v3
       
     - name: Create Fruit zip
-      uses: zip -r -q FruitAPI.zip Allfiles/Labs/01/FruitAPI/**
+      run: zip -r -q FruitAPI.zip Allfiles/Labs/01/FruitAPI/**
     
   
