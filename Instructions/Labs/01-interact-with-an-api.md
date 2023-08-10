@@ -4,24 +4,29 @@ lab:
     module: 'Module: Explore ASP.NET Core APIs'
 ---
 
-# Exercise: Discover and interact with an API
-
-## Lab scenario
-https://learn.microsoft.com/en-us/azure/app-service/quickstart-dotnetcore?tabs=net70&pivots=development-environment-vscode
-
-* [Download the FruitAPI](https://github.com/MicrosoftLearning/develop-aspnet-core-consumes-api/raw/master/Allfiles/Downloads/FruitAPI.zip) code
+In this exercise, you learn how to create and deploy your first ASP.NET web app to Azure App Service. App Service supports various versions of .NET apps, and provides a highly scalable, self-patching web hosting service. ASP.NET web apps are cross-platform and can be hosted on Linux or Windows. When you're finished, you have an Azure resource group consisting of an App Service hosting plan and an App Service with a deployed web application.
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
-- Cras tincidunt massa et nunc vulputate, eget vestibulum massa tincidunt. 
+* Publish an ASP.NET web app to Azure
+* Interact with swagger 
 
-- Maecenas suscipit at nisl vitae malesuada. 
+* Suspendisse eu arcu id velit consequat venenatis.
 
-- Suspendisse eu arcu id velit consequat venenatis.
 
-## Lab Setup
+## Prerequisites
+
+* An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/dotnet).
+* [Visual Studio Code](https://www.visualstudio.com/downloads).
+* The [Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) extension.
+* [The latest .NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0).
+
+## Lab scenario
+https://learn.microsoft.com/en-us/azure/app-service/quickstart-dotnetcore?tabs=net70&pivots=development-environment-vscode
+
+* [Download the FruitAPI](https://github.com/MicrosoftLearning/develop-aspnet-core-consumes-api/raw/master/Allfiles/Downloads/FruitAPI.zip) code
 
   - **Estimated Time**: 00 minutes
 
