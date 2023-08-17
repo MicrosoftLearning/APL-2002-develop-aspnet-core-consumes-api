@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Components;
 using System.Text;
 using System.Diagnostics;
 
+
 namespace FruitWebApp.Pages
 {
 	[BindProperties]
