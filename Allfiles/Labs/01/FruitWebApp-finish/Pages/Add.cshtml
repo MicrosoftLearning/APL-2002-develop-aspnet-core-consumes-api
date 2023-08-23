@@ -8,7 +8,7 @@
     <input hidden asp-for="FruitModels.id" />
 	<div class="border p-3 mt-4" style="width:50%">
 		<div class="row pb-2">
-			<h2 class="text-primary pl-3">Edit Fruit</h2>
+			<h2 class="text-primary pl-3">Add Fruit</h2>
 			<hr />
 		</div>
 		<div class="mb-3">
@@ -19,7 +19,7 @@
 		<div class="mb-3">
 			<label asp-for="FruitModels.instock" class="h5"></label><br/>
 			<input type="checkbox" asp-for="FruitModels.instock" style="width:20px; height:20px" />
-			<label class="h7"><i class="bi bi-arrow-left"></i>  Check the box if it's in stock, uncheck if it isn't.</label>
+			<label class="h7"><i class="bi bi-arrow-left"></i>  Check the box if it's available.</label>
 			<span asp-validation-for="FruitModels.instock" class="text-danger"></span>
 		</div>
 		<button type="submit" class="btn btn-primary" style="width:150px;">Create</button>
