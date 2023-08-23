@@ -9,14 +9,13 @@ using System.Diagnostics;
 
 namespace FruitWebApp.Pages
 {
-	[BindProperties]
 	public class AddModel : PageModel
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
         public AddModel(IHttpClientFactory httpClientFactory) => _httpClientFactory = httpClientFactory;
 
-        [Inject]
+        [BindProperty]
         public FruitModel FruitModels { get; set; }
 
 

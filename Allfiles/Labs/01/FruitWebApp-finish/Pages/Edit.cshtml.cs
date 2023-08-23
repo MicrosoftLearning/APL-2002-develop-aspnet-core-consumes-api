@@ -8,14 +8,13 @@ using System.Diagnostics;
 
 namespace FruitWebApp.Pages
 {
-	[BindProperties]
 	public class EditModel : PageModel
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
         public EditModel(IHttpClientFactory httpClientFactory) => _httpClientFactory = httpClientFactory;
 
-        [Inject]
+        [BindProperty]
         public FruitModel FruitModels { get; set; }
 
 

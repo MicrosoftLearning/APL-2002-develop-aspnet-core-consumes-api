@@ -3,6 +3,7 @@ using FruitWebApp.Models;
 using System.Text.Json;
 using Microsoft.Net.Http.Headers;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FruitWebApp.Pages
 {
@@ -16,7 +17,7 @@ namespace FruitWebApp.Pages
             _httpClientFactory = httpClientFactory;
             _logger = logger;
         }
-        [Inject]
+        [BindProperty]
         public IEnumerable<FruitModel> FruitModels { get; set; }
 
         public async Task OnGet()
