@@ -5,7 +5,7 @@ on:
     branches:
       - 'master'
     paths:
-      - Allfiles/Labs/01/FruitWebApp-start/**
+      - Allfiles/Labs/01/FruitWebApp-codebehind/**
 
 defaults:
   run:
@@ -20,10 +20,10 @@ jobs:
     - name: Create Fruit zip
       run: | 
         cd ./Allfiles/Labs/01
-        zip -r -q ../../Downloads/FruitWebApp-start.zip FruitWebApp-start/*
+        zip -r -q ../../Downloads/FruitWebApp-CodeBehind.zip FruitWebApp-codebehind/*
     - name: Commit and push
       uses: Endbug/add-and-commit@v7
       with:
-        add: '["Allfiles/Downloads/FruitWebApp-start.zip"]'
+        add: '["Allfiles/Downloads/FruitWebApp-CodeBehind.zip"]'
         message: 'Updating Zip for API source files'
         push: true
