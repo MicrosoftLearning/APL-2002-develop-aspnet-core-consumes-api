@@ -36,9 +36,6 @@ namespace FruitWebApp.Pages
                 FruitModels = await JsonSerializer.DeserializeAsync<IEnumerable<FruitModel>>(contentStream);
             }
         }
-
- 
     }
-   
 }
 
