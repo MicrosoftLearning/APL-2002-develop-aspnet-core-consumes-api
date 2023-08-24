@@ -22,13 +22,13 @@ namespace FruitWebApp.Pages
         [BindProperty]
         public IEnumerable<FruitModel> FruitModels { get; set; }
 
-        // OnGet() is async since HTTP operations should be performed async
+        // OnGet() is async since HTTP requests should be performed async
         public async Task OnGet()
         {
             // Create the HTTP client using the FruitAPI named factory
             var httpClient = _httpClientFactory.CreateClient("FruitAPI");
 
-            // Make the GET request and store the response, the empty parameter
+            // Perform the GET request and store the response. The empty parameter
             // in GetAsync doesn't modify the base address set in the client factory 
             using HttpResponseMessage response = await httpClient.GetAsync("");
 
