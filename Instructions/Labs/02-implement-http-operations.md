@@ -17,10 +17,12 @@ After you complete this lab, you will be able to:
 
 To complete the exercise you need to have the following installed on your system:
 
+* An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/dotnet).
 * [Visual Studio Code](https://www.visualstudio.com/downloads).
 * [The latest .NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0).
 * [The C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) for Visual Studio Code
 * [The C# Dev Kit extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit) for Visual Studio Code
+* The [Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) extension.
 
 ## Lab scenario
 https://learn.microsoft.com/en-us/azure/app-service/quickstart-dotnetcore?tabs=net70&pivots=development-environment-vscode
