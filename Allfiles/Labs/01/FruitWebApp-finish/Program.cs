@@ -8,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+// Add IHttpClientFactory to the container and sets the name of the factory
+// to "FruitAPI", and the also sets the base address used in calls
 builder.Services.AddHttpClient("FruitAPI", httpClient =>
 {
     httpClient.BaseAddress = new Uri("https://fruitapi-testing.azurewebsites.net/fruitlist/");

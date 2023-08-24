@@ -28,7 +28,8 @@ namespace FruitWebApp.Pages
             // Create the HTTP client using the FruitAPI named factory
             var httpClient = _httpClientFactory.CreateClient("FruitAPI");
 
-            // Make the GET request and store the response
+            // Make the GET request and store the response, the empty parameter
+            // in GetAsync doesn't modify the base address set in the client factory 
             using HttpResponseMessage response = await httpClient.GetAsync("");
 
             // If the request is successful deserialize the results into the data model
