@@ -35,11 +35,7 @@ namespace FruitWebApp.Pages
 
 		public async Task<IActionResult> OnPost()
 		{
-  /*          var jsonContent = new StringContent(JsonSerializer.Serialize(FruitModels),
-                Encoding.UTF8,
-                "application/json");*/
-
-			var httpClient = _httpClientFactory.CreateClient("FruitAPI");
+ 			var httpClient = _httpClientFactory.CreateClient("FruitAPI");
 
             using HttpResponseMessage response = await httpClient.DeleteAsync(FruitModels.id.ToString());
 
