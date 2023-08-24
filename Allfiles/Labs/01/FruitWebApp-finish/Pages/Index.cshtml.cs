@@ -9,30 +9,32 @@ namespace FruitWebApp.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        // IHttpClientFactory set using dependency injection 
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public IndexModel(IHttpClientFactory httpClientFactory, ILogger<IndexModel> logger)
+        public IndexModel(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
-            _logger = logger;
         }
+
+        // Add the data model and bind the form data to the page model properties
+        // Enumerable since an array is expected as a response
         [BindProperty]
         public IEnumerable<FruitModel> FruitModels { get; set; }
 
+        // OnGet() is async since HTTP operations should be performed async
         public async Task OnGet()
         {
-            using var httpRequestMessage = new HttpRequestMessage(
-                HttpMethod.Get,
-                "https://fruitapi-testing.azurewebsites.net/fruitlist");
- 
+            // Create the HTTP client using the FruitAPI named factory
+            var httpClient = _httpClientFactory.CreateClient("FruitAPI");
 
-            var httpClient = _httpClientFactory.CreateClient();
-            var httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
+            // Make the GET request and store the response
+            using HttpResponseMessage response = await httpClient.GetAsync("");
 
-            if (httpResponseMessage.IsSuccessStatusCode)
+            // If the request is successful deserialize the results into the data model
+            if (response.IsSuccessStatusCode)
             {
-                using var contentStream = await httpResponseMessage.Content.ReadAsStreamAsync();
+                using var contentStream = await response.Content.ReadAsStreamAsync();
                 FruitModels = await JsonSerializer.DeserializeAsync<IEnumerable<FruitModel>>(contentStream);
             }
         }
