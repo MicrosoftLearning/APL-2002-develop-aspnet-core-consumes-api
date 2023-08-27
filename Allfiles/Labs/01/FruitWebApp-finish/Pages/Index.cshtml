@@ -5,7 +5,6 @@
 }
 
 <div class="container p-3">
-
     <div>
         <div class="col-6">
             <h2 class="display-6">My Fruit List</h2>
@@ -35,11 +34,15 @@
                     @{
                         if (@obj.instock)
                         {
-                            <td width="20%" class="text-md-center"><i class="bi bi-check-circle" style="font-size: 1rem; color: green;"></i>&nbsp;Yes</td>
+                            <td width="20%" class="text-md-center">
+                                <i class="bi bi-check-circle" style="font-size: 1rem; color: green;"></i>&nbsp;Yes
+                            </td>
                         }
                         else
                         {
-                            <td width="20%" class="text-md-center"><i class="bi bi-dash-circle" style="font-size: 1rem; color:red;"></i>&nbsp;No</td>
+                            <td width="20%" class="text-md-center">
+                                <i class="bi bi-dash-circle" style="font-size: 1rem; color:red;"></i>&nbsp;No
+                            </td>
                         }
                     }
                     <td width="30%" class="text-center">
