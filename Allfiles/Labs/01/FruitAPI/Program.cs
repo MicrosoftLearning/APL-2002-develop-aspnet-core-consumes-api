@@ -17,6 +17,13 @@ builder.Services.AddSwaggerGen(options =>
 });
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var dbContext = services.GetRequiredService<FruitDb>();
+    dbContext.Database.EnsureCreated();
+}
+
  app.MapGet("/fruitlist",  async (FruitDb db) =>
     await db.Fruits.ToListAsync())
     .WithTags("Get all fruit in list"); 
