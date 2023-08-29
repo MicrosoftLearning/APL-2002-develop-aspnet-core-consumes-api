@@ -5,15 +5,30 @@
 }
 
 <div class="container p-3">
+
     <div>
-        <div class="col-6">
+        <div class="col border-bottom" style="width:80%">
             <h2 class="display-6">My Fruit List</h2>
             <p>My favorite fruits and if I have them available.</p>
         </div>
-        <div class="col-6 text-end pb-4" style="width:80%">
-            <a asp-page="add" class="btn btn-primary mx-2 text-end" title="">
-                <i class="bi bi-plus-square"></i> &nbsp;Add to list
-            </a>
+    </div>
+    <div class="container pt-4">
+        <div class="row" style="width:80%">
+            <div class="col">
+                @if (TempData["success"] != null)
+                {
+                    <h4>@TempData["success"]</h4>
+                }
+                else
+                {
+                    <h4>@TempData["failure"]</h4>
+                }
+            </div>
+            <div class="col text-end pb-4">
+                <a asp-page="add" class="btn btn-primary mx-2 text-end" title="">
+                    <i class="bi bi-plus-square"></i> &nbsp;Add to list
+                </a>
+            </div>
         </div>
     </div>
 
@@ -33,7 +48,7 @@
                 <tr>
                     <td width="50%">@obj.name</td>
                     @{
-                        if (@obj.instock) 
+                        if (@obj.instock)
                         {
                             <td width="20%" class="text-md-center">
                                 <i class="bi bi-check-circle" style="font-size: 1rem; color: green;"></i>&nbsp;Yes
@@ -48,10 +63,10 @@
                     }
                     <td width="30%" class="text-center">
                         <div class="w-75 btn-group btn-group-sm" role="group" style="text-align:center">
-                            <a asp-page="Edit" asp-route-id="@obj.id" class="btn btn-primary  mx-2" >
+                            <a asp-page="Edit" asp-route-id="@obj.id" class="btn btn-primary  mx-2">
                                 <i class="bi bi-pencil-square"></i> Edit
                             </a>
-                            <a asp-page="Delete" asp-route-id="@obj.id" class="btn btn-danger mx-2" >
+                            <a asp-page="Delete" asp-route-id="@obj.id" class="btn btn-danger mx-2">
                                 <i class="bi bi-trash"></i> Delete
                             </a>
                         </div>

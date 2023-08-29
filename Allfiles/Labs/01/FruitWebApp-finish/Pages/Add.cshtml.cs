@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 namespace FruitWebApp.Pages
 {
-	public class AddModel : PageModel
+    public class AddModel : PageModel
     {
         // IHttpClientFactory set using dependency injection 
         private readonly IHttpClientFactory _httpClientFactory;
@@ -20,31 +20,34 @@ namespace FruitWebApp.Pages
         [BindProperty]
         public FruitModel FruitModels { get; set; }
 
-		// OnPost() is async since HTTP requests should be performed async
+        // OnPost() is async since HTTP requests should be performed async
         public async Task<IActionResult> OnPost()
-		{
+        {
             // Serialize the information to be added to the database
             var jsonContent = new StringContent(JsonSerializer.Serialize(FruitModels),
                 Encoding.UTF8,
                 "application/json");
 
-			// Create the HTTP client using the FruitAPI named factory
+            // Create the HTTP client using the FruitAPI named factory
             var httpClient = _httpClientFactory.CreateClient("FruitAPI");
 
-            // Execute the POST request and store the response. The parameters in 
-            // PostAsync direct the POST to use the base address and passes the 
-            // serialized data to the API
-            using HttpResponseMessage response = await httpClient.PostAsync("",jsonContent);
+            // Execute the POST request and store the response. The parameters in PostAsync 
+            // direct the POST to use the base address and passes the serialized data to the API
+            using HttpResponseMessage response = await httpClient.PostAsync("", jsonContent);
 
-			// If the POST was successful return to the home (Index) page 
+            // If the POST was successful return to the home (Index) page and
+            // add a temporary success/failure message to the page. 
             if (response.IsSuccessStatusCode)
             {
+                TempData["success"] = "Data was added successfully.";
                 return RedirectToPage("Index");
             }
-            return Page();
-
-		}
-
-	}
+            else
+            {
+                TempData["failure"] = "Operation was not successful";
+                return RedirectToPage("Index");
+            }
+        }
+    }
 }
 
