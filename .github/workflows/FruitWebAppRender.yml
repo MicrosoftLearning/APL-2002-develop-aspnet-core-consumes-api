@@ -1,11 +1,11 @@
-name: FruitAPI
+name: FruitWebApp Start
 on:
   workflow_dispatch:
   push:
     branches:
       - 'master'
     paths:
-      - Allfiles/Labs/FruitAPI/**
+      - Allfiles/Labs/FruitWebApp-render/**
 
 defaults:
   run:
@@ -19,12 +19,11 @@ jobs:
       uses: actions/checkout@v3
     - name: Create Fruit zip
       run: | 
-        cd ./Allfiles/Labs/
-        zip -r -q ../../Downloads/FruitAPI.zip FruitAPI/*
+        cd ./Allfiles/Labs
+        zip -r -q ../../Downloads/FruitWebApp-Render.zip FruitWebApp-render/*
     - name: Commit and push
       uses: Endbug/add-and-commit@v7
       with:
-        add: '["Allfiles/Downloads/FruitAPI.zip"]'
+        add: '["Allfiles/Downloads/FruitWebApp-render.zip"]'
         message: 'Updating Zip for API source files'
         push: true
-
