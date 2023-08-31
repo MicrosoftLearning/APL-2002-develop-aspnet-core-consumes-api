@@ -13,9 +13,6 @@ After you complete this lab, you will be able to:
 * Publish an ASP.NET web app to Azure
 * Interact with swagger 
 
-* Suspendisse eu arcu id velit consequat venenatis.
-
-
 ## Prerequisites
 
 * An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/dotnet).
