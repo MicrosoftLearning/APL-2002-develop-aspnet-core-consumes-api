@@ -54,7 +54,7 @@ Image showing the layout of the API
 
 1. In the **Terminal** pane run the following `dotnet` commands:
 
-```dotnet
+```ps
 dotnet clean
 ```
 
