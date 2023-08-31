@@ -20,7 +20,7 @@ jobs:
     - name: Create Fruit zip
       run: | 
         cd ./Allfiles/Labs
-        zip -r -q ../../Downloads/FruitWebApp-Render.zip FruitWebApp-render/*
+        zip -r -q ../Downloads/FruitWebApp-Render.zip FruitWebApp-render/*
     - name: Commit and push
       uses: Endbug/add-and-commit@v7
       with:
