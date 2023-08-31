@@ -1,7 +1,7 @@
 ---
 lab:
-    title: 'Exercise: Implement HTTP operations in an ASP.NET Core Razor Pages app'
-    module: 'Module: Implement HTTP operations in an ASP.NET Core Razor Pages app'
+    title: 'Exercise: Implement HTTP operations in ASP.NET Core Razor Pages'
+    module: 'Module: Implement HTTP operations in ASP.NET Core Razor Pages'
 ---
 
 In this exercise, you learn how to add the necessary code to an ASP.NET Core Razor Pages app to create the HTTP client and perform `GET`, `POST`, `PUT`, and `DELETE` operations to manage a list of fruit. The code to render the data in the **.cshtml* files is complete, and you will be updating the **.cshtml.cs* code-behind files.
