@@ -1,4 +1,4 @@
-name: FruitWebApp Start
+name: FruitWebApp CodeBehind
 on:
   workflow_dispatch:
   push:

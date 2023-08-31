@@ -1,4 +1,4 @@
-name: FruitWebApp Start
+name: FruitWebApp Render
 on:
   workflow_dispatch:
   push:
