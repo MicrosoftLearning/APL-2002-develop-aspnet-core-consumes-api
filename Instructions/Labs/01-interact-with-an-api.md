@@ -4,76 +4,99 @@ lab:
     module: 'Module: Interact with an ASP.NET Core minimal API'
 ---
 
-In this exercise, you learn how to create and deploy your first ASP.NET web app to Azure App Service. App Service supports various versions of .NET apps, and provides a highly scalable, self-patching web hosting service. ASP.NET web apps are cross-platform and can be hosted on Linux or Windows. When you're finished, you have an Azure resource group consisting of an App Service hosting plan and an App Service with a deployed web application.
+In this exercise, you'll run an ASP.NET Core minimal API locally and explore the API and the underlying code. 
 
-## Objectives
+After you complete this exercise, you'll be able to:
 
-After you complete this lab, you will be able to:
-
-* Publish an ASP.NET web app to Azure
-* Interact with swagger 
+* Navigate a documented API
+* Determine endpoints for HTTP operations
+* Identify API requirements for HTTP operations
 
 ## Prerequisites
 
-* An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/dotnet).
+To complete the exercise you need to have the following installed on your system:
+
 * [Visual Studio Code](https://www.visualstudio.com/downloads).
-* The [Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) extension.
 * [The latest .NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0).
+* [The C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) for Visual Studio Code
 
-## Lab scenario
-https://learn.microsoft.com/en-us/azure/app-service/quickstart-dotnetcore?tabs=net70&pivots=development-environment-vscode
+## Exercise scenario
 
-* [Download the FruitAPI](https://github.com/MicrosoftLearning/develop-aspnet-core-consumes-api/raw/master/Allfiles/Downloads/FruitAPI.zip) code
+Image showing the layout of the API
 
-  - **Estimated Time**: 00 minutes
 
 ## Instructions
 
-### Before you start
+### Download and run the Fruit API code
 
-#### Setup Task
+In this you'll ...
 
-As part of setting up the App Service, you create:
+#### Task 1: Download the code
 
-* A new resource group to contain all of the Azure resources for the service.
-* A new Hosting Plan that specifies the location, size, and features of the web server farm that hosts your app.
+1. Right-click the following link and select the **Save link as** option. 
 
-Follow these steps to create your App Service resources and publish your project:
+    * [FruitAPI project code](https://github.com/MicrosoftLearning/APL-2002-develop-aspnet-core-consumes-api/blob/development/Allfiles/Downloads/FruitAPI.zip) code
 
-1. In Visual Studio Code, open the **Command Palette** by selecting **View > Command Palette**.
-1. Search for and select **Azure App Service: Create New Web App (Advanced)**.
+1. Launch **File Explorer** and navigate to the location the file was saved.
 
-3. Respond to the prompts as follows:
+1. Unzip the file into it's own folder.
 
-    1. If prompted, sign in to your Azure account.
-    1. Select your **Subscription**.
-    1. Select **Create new Web App... Advanced**.
-    1. For **Enter a globally unique name**, use a name that's unique across all of Azure (valid characters are `a-z`, `0-9`, and `-`). A good pattern is to use a combination of your company name and an app identifier.
-    1. Select Create new resource group and provide a name like `myResourceGroup`.
-    1. When prompted to **Select a runtime stack**, select **.NET 7 (STS)**.
-    1. **Select an operating system** (Windows or Linux).
-    1. Select a location near you.
-    1. Select **Create a new App Service plan**, provide a name, and select the **F1 Free** pricing tier.
-    1. Select **Skip for now** for the **Application Insights** resource.
-    1. When prompted, select **Deploy**.
-    1. Select **MyFirstAzureWebApp** as the folder to deploy.
-    1. Select Add Config when prompted.
+#### Task 2: Build and run the project
 
-1. In the popup **Always deploy the workspace "MyFirstAzureWebApp" to \<app-name\>**, select **Yes** so that Visual Studio Code deploys to the same App Service app every time you're in that workspace.
+1. Launch Visual Studio Code and select **File** and then **Open Folder...** in the menu bar.
 
-1. When publishing completes, select **Browse Website** in the notification and select Open when prompted.
+1. Navigate to the location where you unzipped the project files and select the *FruitAPI* folder.
 
-You see the ASP.NET Core 7.0 web app displayed in the page.
+1. The project structure in the **Explorer** pane should be similar the following screenshot. If the **Explorer** pane isn't visible, select **View** then select **Explorer** in the menu bar.
 
+    ![Screenshot showing the FruitAPI project structure.](media/api-project-structure.png)
 
+1. Open a Terminal by selecting **Terminal** and then **New Terminal**, or use the keyboard shortcut **Ctrl+Shift+`**.
 
-### Exercise 0: 
+1. In the **Terminal** pane run the following `dotnet` commands:
 
+    ```
+    dotnet build
+    dotnet run
+    ```
 
+1. Following is an example of the output you'll see in the **Terminal** pane. Note the `Now listening on: http://localhost:5050` line in the output. It identifies the host and port for the API.
 
-#### Task 0: 
+    ```
+    info: Microsoft.EntityFrameworkCore.Update[30100]
+          Saved 3 entities to in-memory store.
+    info: Microsoft.Hosting.Lifetime[14]
+          Now listening on: http://localhost:5050
+    info: Microsoft.Hosting.Lifetime[0]
+          Application started. Press Ctrl+C to shut down.
+    info: Microsoft.Hosting.Lifetime[0]
+          Hosting environment: Development
+    info: Microsoft.Hosting.Lifetime[0]
+          Content root path: 
+          <project location>
+    ```
+
+### Explore the API
+
+In this section you'll explore the documentation in the Fruit API. The API interacts with an in-memory database that contains the following fields:
+
+Field | Type | Description
+--- | --- | ---
+`id` | integer | Key for the data
+`name` | string | Name of the fruit
+`instock` | boolean | Indicates if the fruit is instock
+
+The Swagger documentation was created using the Swashbuckle package.
+
+#### Task 1: Launch the API in a browser
+
+1. To view the API you can either your browser and enter `http://localhost:5050` the address bar, or you can **Ctrl+Click** on the `Now listening on: http://localhost:5050` link in the **Terminal**. The page will display a "This localhost page can't be found" message.
+
+1. Append the URL in the browser with `/swagger`. Your browser should now display a web page similar to the following screenshot:
+
+    ![Screenshot of the API documentation page.](media/api-home-page.png)
+
+#### Task 2: Identify elements of the API
 
 
 #### Review
-
-Maecenas fringilla ac purus non tincidunt. Aenean pellentesque velit id suscipit tempus. Cras at ullamcorper odio.
