@@ -53,10 +53,9 @@ In this you'll ...
 
 1. Open a Terminal by selecting **Terminal** and then **New Terminal**, or use the keyboard shortcut **Ctrl+Shift+`**.
 
-1. In the **Terminal** pane run the following `dotnet` commands:
+1. In the **Terminal** pane run the following `dotnet` command:
 
     ```
-    dotnet build
     dotnet run
     ```
 
