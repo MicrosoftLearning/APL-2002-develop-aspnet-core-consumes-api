@@ -120,7 +120,7 @@ In this section you:
 
 1. The **Responses** section of the operation has been updated with new information. Note the following:
 
-    * **Request URL:** The URL access in the operation.
+    * **Request URL:** The URL accessed in the operation.
     * **Server response:**  Shows the success code from the operation and the  **Response body** displays the three sample records.
 
 ### Task 2: Perform a POST operation
@@ -139,7 +139,7 @@ In this section you:
 
 1. To run the operation select the **Try it out** button. 
 
-1. Replace the JSON under the **Request body** section with the following:
+1. Replace the JSON in the input box under the **Request body** section with the following:
 
     ```json
     {
@@ -149,12 +149,14 @@ In this section you:
     }
     ```
 
-    >**Note:** The `id` is set to `0` since the database will assign it's own index value.
+    >**Note:** The database will assign it's own index value when adding data so there just needs to be a value in the `id` field.
 
 1. The **Responses** section of the operation has been updated with new information. Note the following:
 
-    * **Request URL:** The URL access in the operation.
-    * **Server response:**  Shows the success code from the operation and the  **Response body** displays the three sample records.
+    * **Request URL:** The URL accessed in the operation.
+    * **Server response:**  Shows the success code from the operation and the  **Response body** displays the record added to the database.
+
+1. Run the `GET` command in the **Get all fruit in list** section and note that a record for *Pear* is now included.
 
 ## Review
 
@@ -162,7 +164,3 @@ In this section you:
 
 
 
-
-
-
-asdfasd
