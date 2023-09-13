@@ -99,10 +99,10 @@ In this section you:
 
 In this section you:
 
-* Perform several operations
+* Perform several operations on the sample data
 * Identify endpoint and data requirements for operations
 
-### Task 1: Perform GET operations
+### Task 1: Perform a `GET` operation
 
 1. Expand the **GET** operation in the **Get all fruit in list** section by clicking anywhere in the **GET** operation box.
 
@@ -123,9 +123,44 @@ In this section you:
     * **Request URL:** The URL accessed in the operation.
     * **Server response:**  Shows the success code from the operation and the  **Response body** displays the three sample records.
 
-### Task 2: Perform a POST operation
+### Task 2: Perform a `POST` operation
 
 1. Expand the **POST** operation in the **Add fruit to list** section by clicking anywhere in the **POST** operation box.
+
+1. Explore the sections of the operation and note the information shown in the following table.
+
+    | Section | Description |
+    |---|--|
+    | **Endpoint** | The endpoint is shown as `/fruitlist`. The full URI is the base URL for the API appended with the specified endpoint, `http://localhost:5050/fruitlist` in our example. |
+    | **Parameters** | None required for this operation. |
+    | **Request body** | The **Request body** is required since the API is expecting data to add to the list and it is expecting the media type `application/json`. |
+    | **Example Value** | Displays the schema of the data the API is expecting to receive. |  
+    | **Responses** | Available response codes for the operation. |
+
+1. To run the operation select the **Try it out** button. 
+
+1. Replace the JSON in the input box under the **Request body** section with the following:
+
+    ```json
+    {
+        "id": 0,
+        "name": "Pear",
+        "instock": true
+    }
+    ```
+
+    >**Note:** The database will assign it's own index value when adding data so there just needs to be a value in the `id` field.
+
+1. The **Responses** section of the operation has been updated with new information. Note the following:
+
+    * **Request URL:** The URL accessed in the operation.
+    * **Server response:**  Shows the success code from the operation and the  **Response body** displays the record added to the database.
+
+1. Run the `GET` command in the **Get all fruit in list** section and note that a record for *Pear* is now included.
+
+### Task 2: Perform a `DELETE` operation
+
+1. Expand the **DELETE** operation in the **Add fruit to list** section by clicking anywhere in the **POST** operation box.
 
 1. Explore the sections of the operation and note the information shown in the following table.
 
