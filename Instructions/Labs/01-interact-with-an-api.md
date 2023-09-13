@@ -30,7 +30,7 @@ Field | Type | Description
 `name` | string | Name of the fruit
 `instock` | boolean | Indicates if the fruit is instock
 
-The Swagger documentation was created using the Swashbuckle package.
+The Swagger documentation was created by using the Swashbuckle package.
 
 >**Note:** Sample data is created every time the API is started.
 
@@ -104,7 +104,7 @@ In this section you:
 
 ### Task 1: Perform a `GET` operation
 
-1. Expand the **GET** operation in the **Get all fruit in list** section by clicking anywhere in the **GET** operation box.
+1. Expand the **GET** operation in the **Get all fruit** section by clicking anywhere in the **GET** operation box.
 
 1. Explore the sections of the operation and note the information shown in the following table.
 
@@ -112,7 +112,6 @@ In this section you:
     |---|--|
     | **Endpoint** | Shown in the header of the operation. The endpoint is shown as `/fruitlist`. The full URI is the base URL for the API appended with the specified endpoint, `http://localhost:5050/fruitlist` in our example. |
     | **Parameters** | None required for this operation. |
-    | **Responses** | Available response codes for the operation. |
     | **Media type** | Specifies the media type encoding the operation will return. |
     | **Example Value** | Displays the schema of the data returned by the operation. Note that this operation returns a JSON array. |
 
@@ -135,7 +134,6 @@ In this section you:
     | **Parameters** | None required for this operation. |
     | **Request body** | The **Request body** is required since the API is expecting data to add to the list and it is expecting the media type `application/json`. |
     | **Example Value** | Displays the schema of the data the API is expecting to receive. |  
-    | **Responses** | Available response codes for the operation. |
 
 1. To run the operation select the **Try it out** button. 
 
@@ -154,48 +152,37 @@ In this section you:
 1. The **Responses** section of the operation has been updated with new information. Note the following:
 
     * **Request URL:** The URL accessed in the operation.
-    * **Server response:**  Shows the success code from the operation and the  **Response body** displays the record added to the database.
+    * **Server response:**  Shows the success code from the operation and the **Response body** displays the record added to the database.
 
 1. Run the `GET` command in the **Get all fruit in list** section and note that a record for *Pear* is now included.
 
 ### Task 2: Perform a `DELETE` operation
 
-1. Expand the **DELETE** operation in the **Add fruit to list** section by clicking anywhere in the **POST** operation box.
+1. Expand the **DELETE** operation in the **Delete fruit by Id** section by clicking anywhere in the **DELETE** operation box.
 
 1. Explore the sections of the operation and note the information shown in the following table.
 
     | Section | Description |
     |---|--|
-    | **Endpoint** | The endpoint is shown as `/fruitlist`. The full URI is the base URL for the API appended with the specified endpoint, `http://localhost:5050/fruitlist` in our example. |
-    | **Parameters** | None required for this operation. |
-    | **Request body** | The **Request body** is required since the API is expecting data to add to the list and it is expecting the media type `application/json`. |
-    | **Example Value** | Displays the schema of the data the API is expecting to receive. |  
-    | **Responses** | Available response codes for the operation. |
+    | **Endpoint** | The endpoint is shown as `/fruitlist/{id}`. The full URI is the base URL for the API appended with the specified `id` for deletion. For example, `http://localhost:5050/fruitlist/1` points to the record where `id` equals `1`.
+    | **Parameters** | Requires the `id` of the record to be passed in the request URL. |
 
 1. To run the operation select the **Try it out** button. 
 
-1. Replace the JSON in the input box under the **Request body** section with the following:
-
-    ```json
-    {
-        "id": 0,
-        "name": "Pear",
-        "instock": true
-    }
-    ```
-
-    >**Note:** The database will assign it's own index value when adding data so there just needs to be a value in the `id` field.
+1. Delete the `Apple` record in the sample data by entering a `1` in the `id` field in the **Parameters** section and then selecting **Execute**.
 
 1. The **Responses** section of the operation has been updated with new information. Note the following:
 
     * **Request URL:** The URL accessed in the operation.
-    * **Server response:**  Shows the success code from the operation and the  **Response body** displays the record added to the database.
+    * **Response body:** Displays the deleted record.
+    * **Code:**  Shows the success code from the operation.
 
-1. Run the `GET` command in the **Get all fruit in list** section and note that a record for *Pear* is now included.
+1. Run the `GET` command in the **Get all fruit in list** section and note that the record for *Apple* is now deleted.
 
 ## Review
 
+In this exercise you learned how to:
 
-
-
-
+* Navigate a documented API
+* Determine endpoints for HTTP operations
+* Identify API requirements for HTTP operations
