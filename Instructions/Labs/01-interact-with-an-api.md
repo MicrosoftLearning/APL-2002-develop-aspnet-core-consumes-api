@@ -156,7 +156,7 @@ In this section you:
 
 1. Run the `GET` command in the **Get all fruit in list** section and note that a record for *Pear* is now included.
 
-### Task 2: Perform a `DELETE` operation
+### Task 3: Perform a `DELETE` operation
 
 1. Expand the **DELETE** operation in the **Delete fruit by Id** section by clicking anywhere in the **DELETE** operation box.
 
