@@ -26,7 +26,7 @@ using (var scope = app.Services.CreateScope())
 
  app.MapGet("/fruitlist",  async (FruitDb db) =>
     await db.Fruits.ToListAsync())
-    .WithTags("Get all fruit in list"); 
+    .WithTags("Get all fruit"); 
 
 app.MapGet("/fruitlist/instock", async (FruitDb db) =>
     await db.Fruits.Where(t => t.Instock).ToListAsync())
@@ -61,7 +61,7 @@ app.MapPut("/fruitlist/{id}", async (int id, Fruit inputFruit, FruitDb db) =>
 
     return Results.NoContent();
 })
-    .WithTags("Update list item by Id");
+    .WithTags("Update fruit by Id");
 
 app.MapDelete("/fruitlist/{id}", async (int id, FruitDb db) =>
 {
@@ -74,7 +74,7 @@ app.MapDelete("/fruitlist/{id}", async (int id, FruitDb db) =>
 
     return Results.NotFound();
 })
-    .WithTags("Delete list item by Id");
+    .WithTags("Delete fruit by Id");
 
 
 app.UseSwagger();
