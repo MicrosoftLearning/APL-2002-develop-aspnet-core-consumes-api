@@ -8,9 +8,9 @@ In this exercise, you learn how to add the necessary code to an ASP.NET Core Raz
 
 ## Objectives
 
-After you complete this lab, you will be able to:
+After you complete this exercise, you will be able to:
 
-* Deploy an API to Azure App Service
+* Implement code for
 * Implement HTTP operations in an ASP.NET Core Razor Pages app
 
 ## Prerequisites
