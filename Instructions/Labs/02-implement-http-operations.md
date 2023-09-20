@@ -148,16 +148,12 @@ The Fruit web app displays the API sample data on the home page. You need to add
 
 ### Task 3: Run the web app
 
-1. Open a Terminal by selecting **Terminal** and then **New Terminal**, or use the keyboard shortcut **Ctrl+Shift+`**.
-
-1. In the **Terminal** pane run the following `dotnet` command:
-
-    ```
-    dotnet run
-    ```
-
-1. Open a browser and enter `http://localhost:5010` in the address bar. The web page displays the API sample data as shown in the following screenshot.
+1. In the VS Code top menu select **Run | Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running and displaying the API sample data as shown in the following screenshot.
 
     ![Screenshot of the web app displaying the sample data.](media/02-web-app-get-sample-data.png)
 
 >**Note:** Later in the exercise you add code to enable the add, edit, and delete functionality of the web app. 
+
+1. To continue with the exercise close the browser.
+
+1. Select **Run | Stop debugging** or **Shift + F5**.
