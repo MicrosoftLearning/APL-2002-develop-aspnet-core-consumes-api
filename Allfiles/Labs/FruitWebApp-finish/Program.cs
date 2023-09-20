@@ -11,11 +11,12 @@ builder.Services.AddRazorPages();
 
 // Add IHttpClientFactory to the container and sets the name of the factory
 // to "FruitAPI", and the also sets the base address used in calls
+// Begin HTTP client code
 builder.Services.AddHttpClient("FruitAPI", httpClient =>
 {
     httpClient.BaseAddress = new Uri("http://localhost:5050/fruitlist/");
 });
-
+// End of HTTP client code
 
 var app = builder.Build();
 
