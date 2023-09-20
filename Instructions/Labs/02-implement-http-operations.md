@@ -93,6 +93,71 @@ In this section you download the code for the Fruit web app and the Fruit API. Y
 
     ![Screenshot showing the Fruit web app project structure.](media/02-web-app-cb-struture.png)
 
-## Implement the HTTP client
+>**Note:** Take time to review the code in each of the files being edited throughout this exercise. The code is heavily commented and can help you understand the code base.
 
+## Implement code for the HTTP client and `GET` operation
 
+The Fruit web app displays the API sample data on the home page. You need to add code to implement both the HTTP client and `GET` operation so the web app will have data to display on the home page when you first build and run it.
+
+### Task 1: Implement the HTTP client
+
+1. Select the *Program.cs* file in the  **Explorer** pane to open it for editing.
+
+1. Add the following code between the `// Begin HTTP client code` and `// End of HTTP client code` comments.
+
+    ```csharp
+    // Add IHttpClientFactory to the container and set the name of the factory
+    // to "FruitAPI". The base address for API requests is also set.
+    builder.Services.AddHttpClient("FruitAPI", httpClient =>
+    {
+        httpClient.BaseAddress = new Uri("http://localhost:5050/fruitlist/");
+    });
+    ```
+
+1. Save the changes to *Program.cs*.
+
+### Task 2: Implement the `GET` operation
+
+1. Select the *index.cshtml.cs* file in the  **Explorer** pane to open it for editing.
+
+1. Add the following code between the `// Begin GET operation code` and `// End GET operation code` comments.
+
+    ```csharp
+    // OnGet() is async since HTTP requests should be performed async
+      public async Task OnGet()
+      {
+          // Create the HTTP client using the FruitAPI named factory
+          var httpClient = _httpClientFactory.CreateClient("FruitAPI");
+
+          // Perform the GET request and store the response. The empty parameter
+          // in GetAsync doesn't modify the base address set in the client factory 
+          using HttpResponseMessage response = await httpClient.GetAsync("");
+
+          // If the request is successful deserialize the results into the data model
+          if (response.IsSuccessStatusCode)
+          {
+              using var contentStream = await response.Content.ReadAsStreamAsync();
+              FruitModels = await JsonSerializer.DeserializeAsync<IEnumerable<FruitModel>>(contentStream);
+          }
+      }
+    ```
+
+1. Save the changes to *Program.cs*.
+
+1. Review the code in the *Program.cs* file. Note where the `IHttpClientFactory` is added to the page with dependency injection. Also note that the data model is bound to the page by using the `[BindProperty]` attribute.
+
+### Task 3: Run the web app
+
+1. Open a Terminal by selecting **Terminal** and then **New Terminal**, or use the keyboard shortcut **Ctrl+Shift+`**.
+
+1. In the **Terminal** pane run the following `dotnet` command:
+
+    ```
+    dotnet run
+    ```
+
+1. Open a browser and enter `http://localhost:5010` in the address bar. The web page displays the API sample data as shown in the following screenshot.
+
+    ![Screenshot of the web app displaying the sample data.](media/02-web-app-get-sample-data.png)
+
+>**Note:** Later in the exercise you add code to enable the add, edit, and delete functionality of the web app. 
