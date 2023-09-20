@@ -89,6 +89,10 @@ In this section you download the code for the Fruit web app and the Fruit API. Y
     code .
     ```
 
-### Before you start
+1. The project structure in the **Explorer** pane should be similar the following screenshot. If the **Explorer** pane isn't visible, select **View** then select **Explorer** in the menu bar.
+
+    ![Screenshot showing the Fruit web app project structure.](media/02-web-app-cb-struture.png)
+
+## Implement the HTTP client
 
 
