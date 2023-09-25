@@ -23,7 +23,6 @@ namespace FruitWebApp.Pages
         public IEnumerable<FruitModel> FruitModels { get; set; }
 
         // Begin GET operation code
-        // OnGet() is async since HTTP requests should be performed async
         public async Task OnGet()
         {
             // Create the HTTP client using the FruitAPI named factory

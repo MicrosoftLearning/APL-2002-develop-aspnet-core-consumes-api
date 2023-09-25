@@ -20,7 +20,7 @@ namespace FruitWebApp.Pages
         [BindProperty]
         public FruitModel FruitModels { get; set; }
 
-        // OnPost() is async since HTTP requests should be performed async
+        // Begin POST operation code
         public async Task<IActionResult> OnPost()
         {
             // Serialize the information to be added to the database
@@ -35,8 +35,8 @@ namespace FruitWebApp.Pages
             // direct the POST to use the base address and passes the serialized data to the API
             using HttpResponseMessage response = await httpClient.PostAsync("", jsonContent);
 
-            // If the POST was successful return to the home (Index) page and
-            // add a temporary success/failure message to the page. 
+            // Return to the home (Index) page and add a temporary success/failure 
+            // message to the page.
             if (response.IsSuccessStatusCode)
             {
                 TempData["success"] = "Data was added successfully.";
@@ -48,6 +48,7 @@ namespace FruitWebApp.Pages
                 return RedirectToPage("Index");
             }
         }
+        // End POST operation code
     }
 }
 
