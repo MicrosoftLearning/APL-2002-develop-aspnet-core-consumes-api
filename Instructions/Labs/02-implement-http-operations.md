@@ -25,7 +25,7 @@ To complete the exercise you need to have the following installed on your system
 
 ## Exercise scenario
 
-In this exercise has two components:
+This exercise has two components:
 
 * An app that sends HTTP requests to an API. The app runs on `http://localhost:5010`
 * An API that responds to HTTP requests. The API runs on `http://localhost:5050`
