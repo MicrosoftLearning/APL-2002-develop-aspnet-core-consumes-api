@@ -198,9 +198,7 @@ In this section you add code to the project to enable the **Add to list**, **Edi
     }
     ```
 
-1. Save the changes to *Add.cshtml.cs*.
-
-1. Review the code in the *Add.cshtml.cs* file. Note where the `IHttpClientFactory` is added to the page with dependency injection. Also note that the data model is bound to the page by using the `[BindProperty]` attribute.
+1. Save the changes to *Add.cshtml.cs*, and review the comments in the code.
 
 1. In the Visual Studio Code top menu select **Run | Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
 
@@ -210,3 +208,100 @@ In this section you add code to the project to enable the **Add to list**, **Edi
 
 1. To continue with the exercise close the browser, and in Visual Studio Code select **Run | Stop debugging** or **Shift + F5**.
 
+### Task 1: Implement the `PUT` operation
+
+1. Select the *Edit.cshtml.cs* file in the  **Explorer** pane to open it for editing.
+
+1. Add the following code between the `// Begin PUT operation code` and `// End PUT operation code` comments.
+
+    ```csharp
+    public async Task<IActionResult> OnPost()
+        {
+            // Serialize the information to be edited in the database
+            var jsonContent = new StringContent(JsonSerializer.Serialize(FruitModels),
+                Encoding.UTF8,
+                "application/json");
+    
+            // Create the HTTP client using the FruitAPI named factory
+            var httpClient = _httpClientFactory.CreateClient("FruitAPI");
+    
+            // Execute the PUT request and store the response. The parameters in PutAsync 
+            // appends the item Id to the base address and passes the serialized data to the API
+            using HttpResponseMessage response = await httpClient.PutAsync(FruitModels.id.ToString(), jsonContent);
+    
+            // Return to the home (Index) page and add a temporary success/failure 
+            // message to the page.
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["success"] = "Data was edited successfully.";
+                return RedirectToPage("Index");
+            }
+            else
+            {
+                TempData["failure"] = "Operation was not successful";
+                return RedirectToPage("Index");
+            }
+    
+        }
+    ```
+
+1. Save the changes to *Edit.cshtml.cs*, and review the comments in the code.
+
+1. In the Visual Studio Code top menu select **Run | Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
+
+1. Choose an item in the list to edit and select the **Edit** button. 
+1. Edit the **Fruit Name** and the **Available?** field, then select **Update**.
+
+1. Verify that your changes appear in the list. The success/failure message near the top of the page will notify you if there was an issue.
+
+1. To continue with the exercise close the browser, and in Visual Studio Code select **Run | Stop debugging** or **Shift + F5**.
+
+### Task 1: Implement the `DELETE` operation
+
+1. Select the *Delete.cshtml.cs* file in the  **Explorer** pane to open it for editing.
+
+1. Add the following code between the `// Begin DELETE operation code` and `// End DELETE operation code` comments.
+
+    ```csharp
+    public async Task<IActionResult> OnPost()
+    {
+        // Create the HTTP client using the FruitAPI named factory
+        var httpClient = _httpClientFactory.CreateClient("FruitAPI");
+    
+        // Appends the data Id for deletion to the base address and performs the operation
+        using HttpResponseMessage response = await httpClient.DeleteAsync(FruitModels.id.ToString());
+    
+        // Return to the home (Index) page and add a temporary success/failure 
+        // message to the page.
+        if (response.IsSuccessStatusCode)
+        {
+            TempData["success"] = "Data was deleted successfully.";
+            return RedirectToPage("Index");
+        }
+        else
+        {
+            TempData["failure"] = "Operation was not successful";
+            return RedirectToPage("Index");
+        }
+    
+    }
+    ```
+
+1. Save the changes to *Delete.cshtml.cs*, and review the comments in the code.
+
+1. In the Visual Studio Code top menu select **Run | Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
+
+1. Choose an item in the list to delete and select the **Delete** button. 
+
+1. Edit the **Fruit Name** and the **Available?** field, then select **Update**.
+
+1. Verify that the item no longer appears in the list. The success/failure message near the top of the page will notify you if there was an issue.
+
+1. To continue with the exercise close the browser, and in Visual Studio Code select **Run | Stop debugging** or **Shift + F5**.
+
+## Review
+
+In this exercise you learned how to:
+
+* Implement `IHttpClientFactory` as the HTTP client
+* Implement HTTP operations in ASP.NET Core Razor Pages code-behind files
