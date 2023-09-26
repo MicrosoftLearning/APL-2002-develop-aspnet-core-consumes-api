@@ -150,13 +150,13 @@ The Fruit web app displays the API sample data on the home page. You need to add
 
 ### Task 3: Run the web app
 
-1. In the Visual Studio Code top menu select **Run | Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running and displaying the API sample data as shown in the following screenshot.
+1. In the Visual Studio Code top menu select **Run \| Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running and displaying the API sample data as shown in the following screenshot.
 
     ![Screenshot of the web app displaying the sample data.](media/02-web-app-get-sample-data.png)
 
 >**Note:** Later in the exercise you add code to enable the add, edit, and delete functionality of the web app. 
 
-1. To continue with the exercise close the browser, and in Visual Studio Code select **Run | Stop debugging** or **Shift + F5**.
+1. To continue with the exercise close the browser, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
 
 ## Implement code for the `POST`, `PUT`, and  `DELETE` operations
 
@@ -200,13 +200,13 @@ In this section you add code to the project to enable the **Add to list**, **Edi
 
 1. Save the changes to *Add.cshtml.cs*, and review the comments in the code.
 
-1. In the Visual Studio Code top menu select **Run | Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
+1. In the Visual Studio Code top menu select **Run \| Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
 
 1. Select the **Add to list** button and fill in the generated the form. Then select the **Create** button.
 
 1. Verify that your addition appears at the bottom of the list. The success/failure message near the top of the page will notify you if there was an issue.
 
-1. To continue with the exercise close the browser, and in Visual Studio Code select **Run | Stop debugging** or **Shift + F5**.
+1. To continue with the exercise close the browser, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
 
 ### Task 1: Implement the `PUT` operation
 
@@ -247,14 +247,14 @@ In this section you add code to the project to enable the **Add to list**, **Edi
 
 1. Save the changes to *Edit.cshtml.cs*, and review the comments in the code.
 
-1. In the Visual Studio Code top menu select **Run | Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
+1. In the Visual Studio Code top menu select **Run \| Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
 
 1. Choose an item in the list to edit and select the **Edit** button. 
 1. Edit the **Fruit Name** and the **Available?** field, then select **Update**.
 
 1. Verify that your changes appear in the list. The success/failure message near the top of the page will notify you if there was an issue.
 
-1. To continue with the exercise close the browser, and in Visual Studio Code select **Run | Stop debugging** or **Shift + F5**.
+1. To continue with the exercise close the browser, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
 
 ### Task 1: Implement the `DELETE` operation
 
@@ -289,7 +289,7 @@ In this section you add code to the project to enable the **Add to list**, **Edi
 
 1. Save the changes to *Delete.cshtml.cs*, and review the comments in the code.
 
-1. In the Visual Studio Code top menu select **Run | Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
+1. In the Visual Studio Code top menu select **Run \| Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
 
 1. Choose an item in the list to delete and select the **Delete** button. 
 
@@ -297,7 +297,7 @@ In this section you add code to the project to enable the **Add to list**, **Edi
 
 1. Verify that the item no longer appears in the list. The success/failure message near the top of the page will notify you if there was an issue.
 
-1. To continue with the exercise close the browser, and in Visual Studio Code select **Run | Stop debugging** or **Shift + F5**.
+1. To continue with the exercise close the browser, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
 
 ## Review
 
