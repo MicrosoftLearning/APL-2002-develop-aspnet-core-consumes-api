@@ -22,7 +22,7 @@ namespace FruitWebApp.Pages
         [BindProperty]
         public IEnumerable<FruitModel> FruitModels { get; set; }
 
-        // OnGet() is async since HTTP requests should be performed async
+        // Begin GET operation code
         public async Task OnGet()
         {
             // Create the HTTP client using the FruitAPI named factory
@@ -39,6 +39,7 @@ namespace FruitWebApp.Pages
                 FruitModels = await JsonSerializer.DeserializeAsync<IEnumerable<FruitModel>>(contentStream);
             }
         }
+        // End GET operation code
     }
 }
 
