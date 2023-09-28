@@ -8,11 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddHttpClient("FruitAPI", httpClient =>
-{
-    httpClient.BaseAddress = new Uri("https://fruitapi-testing.azurewebsites.net/fruitlist/");
-});
 
+
+// Begin HTTP client code
+
+// End of HTTP client code
 
 var app = builder.Build();
 

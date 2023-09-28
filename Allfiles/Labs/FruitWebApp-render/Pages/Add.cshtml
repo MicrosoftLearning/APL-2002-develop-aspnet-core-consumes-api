@@ -4,26 +4,8 @@
 	ViewData["Title"] = "Add page";
 }
 
-<form method="post">
-    <input hidden asp-for="FruitModels.id" />
-	<div class="border p-3 mt-4" style="width:50%">
-		<div class="row pb-2">
-			<h2 class="text-primary pl-3">Edit Fruit</h2>
-			<hr />
-		</div>
-		<div class="mb-3">
-			<label asp-for="FruitModels.name" class="h5"></label><br/>
-			<input type="text" asp-for="FruitModels.name" />
-			<span asp-validation-for="FruitModels.name" class="text-danger"></span>
-		</div>
-		<div class="mb-3">
-			<label asp-for="FruitModels.instock" class="h5"></label><br/>
-			<input type="checkbox" asp-for="FruitModels.instock" style="width:20px; height:20px" />
-			<label class="h7"><i class="bi bi-arrow-left"></i>  Check the box if it's in stock, uncheck if it isn't.</label>
-			<span asp-validation-for="FruitModels.instock" class="text-danger"></span>
-		</div>
-		<button type="submit" class="btn btn-primary" style="width:150px;">Create</button>
-		<a asp-page="Index" class="btn btn-secondary" style="width:150px;">Cancel</a>
-	</div>
+@* Note: Many of the "class=" instances reference Bootstrap sytles. *@
 
-</form>
+@* Begin render Add code block *@
+
+@* End render Add code block *@
