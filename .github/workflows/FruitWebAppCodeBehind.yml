@@ -25,5 +25,5 @@ jobs:
       uses: Endbug/add-and-commit@v7
       with:
         add: '["Allfiles/Downloads/FruitWebApp-CodeBehind.zip"]'
-        message: 'Updating Zip for API source files'
+        message: 'Updating Zip for code-behind source files'
         push: true
