@@ -1,6 +1,6 @@
 # APL-2002: Develop an ASP.NET Core web app that consumes an API
 
-Looking for the **[HTML pages](https://microsoftlearning.github.io/develop-aspnet-core-consumes-api/)**?
+Looking for the **[HTML pages](https://microsoftlearning.github.io/APL-2002-develop-aspnet-core-consumes-api/)**?
 
 **Are you an MCT?** - Have a look at our [GitHub User Guide for MCTs](https://microsoftlearning.github.io/MCT-User-Guide/)
 

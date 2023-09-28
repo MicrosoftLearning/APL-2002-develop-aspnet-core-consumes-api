@@ -49,7 +49,7 @@ In this section you:
 
 1. Right-click the following link and select the **Save link as** option. 
 
-    * [FruitAPI project code](https://github.com/MicrosoftLearning/APL-2002-develop-aspnet-core-consumes-api/blob/development/Allfiles/Downloads/FruitAPI.zip) code
+    * [FruitAPI project code](https://github.com/MicrosoftLearning/APL-2002-develop-aspnet-core-consumes-api/blob/master/Allfiles/Downloads/FruitAPI.zip) code
 
 1. Launch **File Explorer** and navigate to the location the file was saved.
 
