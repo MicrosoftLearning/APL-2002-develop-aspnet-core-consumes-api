@@ -20,10 +20,10 @@ jobs:
     - name: Create Fruit zip
       run: | 
         cd ./Allfiles/Labs/FruitWebApp-codebehind
-        zip -r -q ../../Downloads/FruitWebApp-CodeBehind.zip . -i .*
+        zip -r -q ../../Downloads/FruitWebApp-codebehind.zip * .vscode/*
     - name: Commit and push
       uses: Endbug/add-and-commit@v7
       with:
-        add: '["Allfiles/Downloads/FruitWebApp-CodeBehind.zip"]'
+        add: '["Allfiles/Downloads/FruitWebApp-codebehind.zip"]'
         message: 'Updating Zip for code-behind source files'
         push: true
