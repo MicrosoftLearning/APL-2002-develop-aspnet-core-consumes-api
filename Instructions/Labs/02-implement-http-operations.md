@@ -297,7 +297,10 @@ In this section you add code to the project to enable the **Add to list**, **Edi
 
 1. Verify that the item no longer appears in the list. The success/failure message near the top of the page will notify you if there was an issue.
 
-1. To continue with the exercise close the browser, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
+When you are ready to end the exercise:
+
+* Close the browser, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**. 
+* Stop the Fruit API by entering  `Ctrl + C` in the terminal it's running in.
 
 ## Review
 
