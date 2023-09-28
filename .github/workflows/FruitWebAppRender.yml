@@ -19,8 +19,8 @@ jobs:
       uses: actions/checkout@v3
     - name: Create Fruit zip
       run: | 
-        cd ./Allfiles/Labs
-        zip -r -q ../Downloads/FruitWebApp-Render.zip FruitWebApp-render/*
+        cd ./Allfiles/Labs/FruitWebApp-render
+        zip -r -q ../../Downloads/FruitWebApp-render.zip . -i .*
     - name: Commit and push
       uses: Endbug/add-and-commit@v7
       with:
