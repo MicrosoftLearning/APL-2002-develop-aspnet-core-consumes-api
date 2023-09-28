@@ -181,6 +181,10 @@ In this section you:
 
 1. Run the `GET` command in the **Get all fruit in list** section and note that the record for *Apple* is now deleted.
 
+When you are ready to end the exercise:
+
+* Close the browser and stop the Fruit API by entering  `Ctrl + C` in the terminal it's running in.
+
 ## Review
 
 In this exercise you learned how to:

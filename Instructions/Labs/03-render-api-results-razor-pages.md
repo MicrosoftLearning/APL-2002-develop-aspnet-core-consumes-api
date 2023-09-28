@@ -106,49 +106,49 @@ The Fruit web app displays the API sample data on the home page. You need to add
 
 1. Add the following code between the `@* Begin render API data code block *@` and `@* End render API data code block *@` comments.
 
-```cshtml
-<tbody>
-    
-    @*  The Razor keyword @foreach is used to iterate through the
-        data returned to the data model from the HTTP operations. *@
-    @foreach (var obj in Model.FruitModels)
-    {
-        <tr>
-            @* Display the name of the fruit. *@
-            <td width="50%">@obj.name</td>
-            @*  The following if statment is a Razor code block that changes the color 
-                and icon of the available indicator in the page rendering. *@
-            @{
-                if (@obj.instock)
-                {
-                    <td width="20%" class="text-md-center">
-                        <i class="bi bi-check-circle" style="font-size: 1rem; color: green;"></i>&nbsp;Yes
-                    </td>
+    ```csharp
+    <tbody>
+        
+        @*  The Razor keyword @foreach is used to iterate through the
+            data returned to the data model from the HTTP operations. *@
+        @foreach (var obj in Model.FruitModels)
+        {
+            <tr>
+                @* Display the name of the fruit. *@
+                <td width="50%">@obj.name</td>
+                @*  The following if statment is a Razor code block that changes the color 
+                    and icon of the available indicator in the page rendering. *@
+                @{
+                    if (@obj.instock)
+                    {
+                        <td width="20%" class="text-md-center">
+                            <i class="bi bi-check-circle" style="font-size: 1rem; color: green;"></i>&nbsp;Yes
+                        </td>
+                    }
+                    else
+                    {
+                        <td width="20%" class="text-md-center">
+                            <i class="bi bi-dash-circle" style="font-size: 1rem; color:red;"></i>&nbsp;No
+                        </td>
+                    }
                 }
-                else
-                {
-                    <td width="20%" class="text-md-center">
-                        <i class="bi bi-dash-circle" style="font-size: 1rem; color:red;"></i>&nbsp;No
-                    </td>
-                }
-            }
-            <td width="30%" class="text-center">
-                @*  The following div contains information to handle the edit and delete functions. *@
-                <div class="w-75 btn-group btn-group-sm" role="group" style="text-align:center">
-                    @* Routes to the Edit page and passes the id of the record. *@
-                    <a asp-page="Edit" asp-route-id="@obj.id" class="btn btn-primary  mx-2">
-                        <i class="bi bi-pencil-square"></i> Edit
-                    </a>
-                    @* Routes to the Delete page and passes the id of the record. *@
-                    <a asp-page="Delete" asp-route-id="@obj.id" class="btn btn-danger mx-2">
-                        <i class="bi bi-trash"></i> Delete
-                    </a>
-                </div>
-            </td>
-        </tr>
-    }
-</tbody>
-```
+                <td width="30%" class="text-center">
+                    @*  The following div contains information to handle the edit and delete functions. *@
+                    <div class="w-75 btn-group btn-group-sm" role="group" style="text-align:center">
+                        @* Routes to the Edit page and passes the id of the record. *@
+                        <a asp-page="Edit" asp-route-id="@obj.id" class="btn btn-primary  mx-2">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </a>
+                        @* Routes to the Delete page and passes the id of the record. *@
+                        <a asp-page="Delete" asp-route-id="@obj.id" class="btn btn-danger mx-2">
+                            <i class="bi bi-trash"></i> Delete
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+    ```
 
 1. Save the changes to *Index.cshtml*, and review the comments in the code.
 
@@ -170,35 +170,35 @@ The add, edit, and delete operations are each handled on a separate *.cshtml* pa
 
 1. Add the following code between the `@* Begin render Add code block *@` and `@* End render Add code block *@` comments.
 
-```cshtml
-<form method="post">
-    @* 	The FruitModels.id is here so the full data model is represented on the page.
-		The database behind the API will assign the id. *@
-	<input hidden asp-for="FruitModels.id" />
-	<div class="border p-3 mt-4" style="width:50%">
-		<div class="row pb-2">
-			<h2 class="text-primary pl-3">Add Fruit</h2>
-			<hr />
-		</div>
-		<div class="mb-3">
-			<label asp-for="FruitModels.name" class="h5"></label><br/>
-			@* Empty text box for the name of the fruit to be added. *@
-			<input type="text" asp-for="FruitModels.name" />
-			<span asp-validation-for="FruitModels.name" class="text-danger"></span>
-		</div>
-		<div class="mb-3">
-			<label asp-for="FruitModels.instock" class="h5"></label><br/>
-			@* Render the true/false instock state from the record in an editable checkbox. *@
-			<input type="checkbox" asp-for="FruitModels.instock" style="width:20px; height:20px" />
-			<label class="h7"><i class="bi bi-arrow-left"></i>  Check the box if it's available.</label>
-			<span asp-validation-for="FruitModels.instock" class="text-danger"></span>
-		</div>
-		@* Submit the addition or return to the Index page if the Add is cancelled.*@
-		<button type="submit" class="btn btn-primary" style="width:150px;">Create</button>
-		<a asp-page="Index" class="btn btn-secondary" style="width:150px;">Cancel</a>
-	</div>
-</form>
-```
+    ```csharp
+    <form method="post">
+        @* 	The FruitModels.id is here so the full data model is represented on the page.
+    		The database behind the API will assign the id. *@
+    	<input hidden asp-for="FruitModels.id" />
+    	<div class="border p-3 mt-4" style="width:50%">
+    		<div class="row pb-2">
+    			<h2 class="text-primary pl-3">Add Fruit</h2>
+    			<hr />
+    		</div>
+    		<div class="mb-3">
+    			<label asp-for="FruitModels.name" class="h5"></label><br/>
+    			@* Empty text box for the name of the fruit to be added. *@
+    			<input type="text" asp-for="FruitModels.name" />
+    			<span asp-validation-for="FruitModels.name" class="text-danger"></span>
+    		</div>
+    		<div class="mb-3">
+    			<label asp-for="FruitModels.instock" class="h5"></label><br/>
+    			@* Render the true/false instock state from the record in an editable checkbox. *@
+    			<input type="checkbox" asp-for="FruitModels.instock" style="width:20px; height:20px" />
+    			<label class="h7"><i class="bi bi-arrow-left"></i>  Check the box if it's available.</label>
+    			<span asp-validation-for="FruitModels.instock" class="text-danger"></span>
+    		</div>
+    		@* Submit the addition or return to the Index page if the Add is cancelled.*@
+    		<button type="submit" class="btn btn-primary" style="width:150px;">Create</button>
+    		<a asp-page="Index" class="btn btn-secondary" style="width:150px;">Cancel</a>
+    	</div>
+    </form>
+    ```
 
 1. Save the changes to *Add.cshtml*, and review the comments in the code.
 
@@ -222,35 +222,35 @@ In this section you add code to create a form in the *Edit.cshtml* file to enabl
 
 1. Add the following code between the `@* Begin render Edit code block *@` and `@* End render Edit code block *@` comments.
 
-```cshtml
-<form method="post">
-    @* 	The id for the data record is hidden because it needs to be available to the 
-		code-behind processing, but it's not displayed. *@
-	<input hidden asp-for="FruitModels.id" />
-	<div class="border p-3 mt-4" style="width:50%">
-		<div class="row pb-2">
-			<h2 class="text-primary pl-3">Edit Fruit</h2>
-			<hr />
-		</div>
-		<div class="mb-3">
-			<label asp-for="FruitModels.name" class="h5"></label><br/>
-			@* Render the current name of the fruit in an editable text box. *@
-			<input type="text" asp-for="FruitModels.name" />
-			<span asp-validation-for="FruitModels.name" class="text-danger"></span>
-		</div>
-		<div class="mb-3">
-			<label asp-for="FruitModels.instock" class="h5"></label><br/>
-			@* Render the true/false instock state from the record in an editable checkbox. *@
-			<input type="checkbox" asp-for="FruitModels.instock" style="width:20px; height:20px" />
-			<label class="h7"><i class="bi bi-arrow-left"></i>  Check the box if available.</label>
-			<span asp-validation-for="FruitModels.instock" class="text-danger"></span>
-		</div>
-		@* Submit the changes or return to the Index page if the edit is cancelled.*@
-		<button type="submit" class="btn btn-primary" style="width:150px;">Update</button>
-		<a asp-page="Index" class="btn btn-secondary" style="width:150px;">Cancel</a>
-	</div>
-</form>
-```
+    ```csharp
+    <form method="post">
+        @* 	The id for the data record is hidden because it needs to be available to the 
+    		code-behind processing, but it's not displayed. *@
+    	<input hidden asp-for="FruitModels.id" />
+    	<div class="border p-3 mt-4" style="width:50%">
+    		<div class="row pb-2">
+    			<h2 class="text-primary pl-3">Edit Fruit</h2>
+    			<hr />
+    		</div>
+    		<div class="mb-3">
+    			<label asp-for="FruitModels.name" class="h5"></label><br/>
+    			@* Render the current name of the fruit in an editable text box. *@
+    			<input type="text" asp-for="FruitModels.name" />
+    			<span asp-validation-for="FruitModels.name" class="text-danger"></span>
+    		</div>
+    		<div class="mb-3">
+    			<label asp-for="FruitModels.instock" class="h5"></label><br/>
+    			@* Render the true/false instock state from the record in an editable checkbox. *@
+    			<input type="checkbox" asp-for="FruitModels.instock" style="width:20px; height:20px" />
+    			<label class="h7"><i class="bi bi-arrow-left"></i>  Check the box if available.</label>
+    			<span asp-validation-for="FruitModels.instock" class="text-danger"></span>
+    		</div>
+    		@* Submit the changes or return to the Index page if the edit is cancelled.*@
+    		<button type="submit" class="btn btn-primary" style="width:150px;">Update</button>
+    		<a asp-page="Index" class="btn btn-secondary" style="width:150px;">Cancel</a>
+    	</div>
+    </form>
+    ```
 
 1. Save the changes to *Edit.cshtml*, and review the comments in the code.
 
@@ -274,34 +274,34 @@ In this section you add code to create a form in the *Delete.cshtml* file to ena
 
 1. Add the following code between the `@* Begin render Delete code block *@` and `@* End render Delete code block *@` comments.
 
-```cshtml
-<form method="post">
-	@* 	The id for the data record is hidden because it needs to be avaialable to the 
-		code-behind processing, but it's not displayed. *@
-    <input hidden asp-for="FruitModels.id" />
-	<div class="border p-3 mt-4" style="width:50%">
-		<div class="row pb-2">
-			<h2 class="text-primary pl-3">Delete Fruit</h2>
-			<hr />
-		</div>
-		<div class="mb-3">
-			<label asp-for="FruitModels.name" class="h5"></label><br/>
-			@* Render the name of the fruit in a non-editable text box. *@
-			<input type="text" asp-for="FruitModels.name" disabled/>
-			<span asp-validation-for="FruitModels.name" class="text-danger"></span>
-		</div>
-		<div class="mb-3">
-			<label asp-for="FruitModels.instock" class="h5"></label><br/>
-			@* Render the true/false instock state from the record in a non-editable checkbox. *@
-			<input type="checkbox" asp-for="FruitModels.instock" style="width:20px; height:20px" disabled  />
-			<span asp-validation-for="FruitModels.instock" class="text-danger"></span>
-		</div>
-		@* Submit the changes or return to the Index page if the delete is cancelled.*@
-		<button type="submit" class="btn btn-danger " style="width:150px;">Delete</button>
-		<a asp-page="Index" class="btn btn-secondary" style="width:150px;">Cancel</a>
-	</div>
-</form>
-```
+    ```csharp
+    <form method="post">
+    	@* 	The id for the data record is hidden because it needs to be avaialable to the 
+    		code-behind processing, but it's not displayed. *@
+        <input hidden asp-for="FruitModels.id" />
+    	<div class="border p-3 mt-4" style="width:50%">
+    		<div class="row pb-2">
+    			<h2 class="text-primary pl-3">Delete Fruit</h2>
+    			<hr />
+    		</div>
+    		<div class="mb-3">
+    			<label asp-for="FruitModels.name" class="h5"></label><br/>
+    			@* Render the name of the fruit in a non-editable text box. *@
+    			<input type="text" asp-for="FruitModels.name" disabled/>
+    			<span asp-validation-for="FruitModels.name" class="text-danger"></span>
+    		</div>
+    		<div class="mb-3">
+    			<label asp-for="FruitModels.instock" class="h5"></label><br/>
+    			@* Render the true/false instock state from the record in a non-editable checkbox. *@
+    			<input type="checkbox" asp-for="FruitModels.instock" style="width:20px; height:20px" disabled  />
+    			<span asp-validation-for="FruitModels.instock" class="text-danger"></span>
+    		</div>
+    		@* Submit the changes or return to the Index page if the delete is cancelled.*@
+    		<button type="submit" class="btn btn-danger " style="width:150px;">Delete</button>
+    		<a asp-page="Index" class="btn btn-secondary" style="width:150px;">Cancel</a>
+    	</div>
+    </form>
+    ```
 
 1. Save the changes to *Delete.cshtml*, and review the comments in the code.
 
