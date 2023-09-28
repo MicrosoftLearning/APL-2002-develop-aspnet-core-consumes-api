@@ -24,6 +24,6 @@ jobs:
     - name: Commit and push
       uses: Endbug/add-and-commit@v7
       with:
-        add: '["Allfiles/Downloads/FruitWebApp-Render.zip"]'
+        add: '["Allfiles/Downloads/FruitWebApp-render.zip"]'
         message: 'Updating Zip for render source files'
         push: true
