@@ -20,7 +20,7 @@ jobs:
     - name: Create FruitAPI zip
       run: | 
         cd ./Allfiles/Labs/FruitAPI
-        zip -r -q ../Downloads/FruitAPI.zip *.*
+        zip -r -q ../../Downloads/FruitAPI.zip *.*
     - name: Commit and push
       uses: Endbug/add-and-commit@v7
       with:
