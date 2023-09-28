@@ -49,47 +49,7 @@
         </thead>
 
         @* Begin render API data code block *@
-        <tbody>
-            
-            @*  The Razor keyword @foreach is used to iterate through the
-                data returned to the data model from the HTTP operations. *@
-            @foreach (var obj in Model.FruitModels)
-            {
-                <tr>
-                    @* Display the name of the fruit. *@
-                    <td width="50%">@obj.name</td>
-                    @*  The following if statment is a Razor code block that changes the color 
-                        and icon of the available indicator in the page rendering. *@
-                    @{
-                        if (@obj.instock)
-                        {
-                            <td width="20%" class="text-md-center">
-                                <i class="bi bi-check-circle" style="font-size: 1rem; color: green;"></i>&nbsp;Yes
-                            </td>
-                        }
-                        else
-                        {
-                            <td width="20%" class="text-md-center">
-                                <i class="bi bi-dash-circle" style="font-size: 1rem; color:red;"></i>&nbsp;No
-                            </td>
-                        }
-                    }
-                    <td width="30%" class="text-center">
-                        @*  The following div contains information to handle the edit and delete functions. *@
-                        <div class="w-75 btn-group btn-group-sm" role="group" style="text-align:center">
-                            @* Routes to the Edit page and passes the id of the record. *@
-                            <a asp-page="Edit" asp-route-id="@obj.id" class="btn btn-primary  mx-2">
-                                <i class="bi bi-pencil-square"></i> Edit
-                            </a>
-                            @* Routes to the Delete page and passes the id of the record. *@
-                            <a asp-page="Delete" asp-route-id="@obj.id" class="btn btn-danger mx-2">
-                                <i class="bi bi-trash"></i> Delete
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-            }
-        </tbody>
+        
         @* End render API data code block *@
 
     </table>
