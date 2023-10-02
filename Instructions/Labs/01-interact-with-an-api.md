@@ -16,8 +16,8 @@ After you complete this exercise, you'll be able to:
 
 To complete the exercise you need to have the following installed on your system:
 
-* [Visual Studio Code](https://code.visualstudio.com).
-* [The latest .NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0).
+* [Visual Studio Code](https://code.visualstudio.com)
+* [The latest .NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
 * [The C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) for Visual Studio Code
 
 **Estimated exercise completion time**: 30 minutes
