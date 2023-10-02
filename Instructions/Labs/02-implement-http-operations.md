@@ -17,7 +17,7 @@ After you complete this exercise, you will be able to:
 
 To complete the exercise you need to have the following installed on your system:
 
-* [Visual Studio Code](https://www.visualstudio.com/downloads).
+* [Visual Studio Code](https://code.visualstudio.com).
 * [The latest .NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0).
 * [The C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) for Visual Studio Code
 
@@ -83,13 +83,9 @@ In this section you download the code for the Fruit web app and the Fruit API. Y
 
 1. Unzip the file into it's own folder.
 
-1. Open **Windows Terminal**, or a **Command Prompt**, and navigate to the location you extracted the code for the API.
+1. Launch Visual Studio Code and select **File** and then **Open Folder...** in the menu bar.
 
-1. Run the following command to start Visual Studio Code and open the project.
-
-    ```
-    code .
-    ```
+1. Navigate to the location where you unzipped the project files and select the *FruitWebApp-codebehind* folder.
 
 1. The project structure in the **Explorer** pane should be similar the following screenshot. If the **Explorer** pane isn't visible, select **View** then select **Explorer** in the menu bar.
 
@@ -144,9 +140,9 @@ The Fruit web app displays the API sample data on the home page. You need to add
       }
     ```
 
-1. Save the changes to *Program.cs*.
+1. Save the changes to *Index.cshtml.cs*.
 
-1. Review the code in the *Program.cs* file. Note where the `IHttpClientFactory` is added to the page with dependency injection. Also note that the data model is bound to the page by using the `[BindProperty]` attribute.
+1. Review the code in the *Index.cshtml.cs* file. Note where the `IHttpClientFactory` is added to the page with dependency injection. Also note that the data model is bound to the page by using the `[BindProperty]` attribute.
 
 ### Task 3: Run the web app
 
@@ -154,9 +150,13 @@ The Fruit web app displays the API sample data on the home page. You need to add
 
     ![Screenshot of the web app displaying the sample data.](media/02-web-app-get-sample-data.png)
 
->**Note:** Later in the exercise you add code to enable the add, edit, and delete functionality of the web app. 
+    >**Note:** Later in the exercise you add code to enable the add, edit, and delete functionality of the web app. 
 
-1. To continue with the exercise close the browser, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
+    >**Note:** You can safely ignore the prompt below if it appears when you run the app.
+
+    ![Screenshot of the prompt to install a self-signed certificate.](media/install-cert.png)
+
+1. To continue with the exercise close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
 
 ## Implement code for the `POST`, `PUT`, and  `DELETE` operations
 
@@ -206,7 +206,7 @@ In this section you add code to the project to enable the **Add to list**, **Edi
 
 1. Verify that your addition appears at the bottom of the list. The success/failure message near the top of the page will notify you if there was an issue.
 
-1. To continue with the exercise close the browser, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
+1. To continue with the exercise close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
 
 ### Task 1: Implement the `PUT` operation
 
@@ -254,7 +254,7 @@ In this section you add code to the project to enable the **Add to list**, **Edi
 
 1. Verify that your changes appear in the list. The success/failure message near the top of the page will notify you if there was an issue.
 
-1. To continue with the exercise close the browser, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
+1. To continue with the exercise close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
 
 ### Task 1: Implement the `DELETE` operation
 
@@ -299,7 +299,8 @@ In this section you add code to the project to enable the **Add to list**, **Edi
 
 When you are ready to end the exercise:
 
-* Close the browser, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**. 
+* Close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**. 
+
 * Stop the Fruit API by entering  `Ctrl + C` in the terminal it's running in.
 
 ## Review
