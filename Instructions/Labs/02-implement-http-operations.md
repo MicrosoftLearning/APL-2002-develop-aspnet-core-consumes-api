@@ -21,7 +21,7 @@ To complete the exercise you need to have the following installed on your system
 * [The latest .NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0).
 * [The C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) for Visual Studio Code
 
-**Estimated exercise completion time**: 45 minutes
+**Estimated exercise completion time**: 30 minutes
 
 ## Exercise scenario
 
