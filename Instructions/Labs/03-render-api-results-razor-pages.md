@@ -17,7 +17,7 @@ After you complete this exercise, you will be able to:
 
 To complete the exercise you need to have the following installed on your system:
 
-* [Visual Studio Code](https://www.visualstudio.com/downloads).
+* [Visual Studio Code](https://code.visualstudio.com).
 * [The latest .NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0).
 * [The C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) for Visual Studio Code
 
@@ -82,13 +82,9 @@ In this section you download the code for the Fruit web app and the Fruit API. Y
 
 1. Unzip the file into it's own folder.
 
-1. Open **Windows Terminal**, or a **Command Prompt**, and navigate to the location you extracted the code for the API.
+1. Launch Visual Studio Code and select **File** and then **Open Folder...** in the menu bar.
 
-1. Run the following command to start Visual Studio Code and open the project.
-
-    ```
-    code .
-    ```
+1. Navigate to the location where you unzipped the project files and select the *FruitWebApp-render* folder.
 
 1. The project structure in the **Explorer** pane should be similar the following screenshot. If the **Explorer** pane isn't visible, select **View** then select **Explorer** in the menu bar.
 
@@ -158,7 +154,11 @@ The Fruit web app displays the API sample data on the home page. You need to add
 
     >**Note:** The **Add to list**, **Edit**, and **Delete** functions will not work until you add code for them later in this exercise.
 
-1. To continue with the exercise close the browser, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
+    >**Note:** You can safely ignore the prompt below if it appears when you run the app.
+
+    ![Screenshot of the prompt to install a self-signed certificate.](media/install-cert.png)
+
+1. To continue with the exercise close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
 
 ## Implement code to handle the `Add to list` functionality
 
@@ -210,7 +210,7 @@ The add, edit, and delete operations are each handled on a separate *.cshtml* pa
 
 1. Select **Create** to add the entry to the list and you will be routed back to the home page. Verify your entry was added to the list.
 
-1. To continue with the exercise close the browser, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
+1. To continue with the exercise close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
 
 ## Implement code to handle the `Edit` functionality
 
@@ -262,7 +262,7 @@ In this section you add code to create a form in the *Edit.cshtml* file to enabl
 
 1. Select **Update** to save your changes and you will be routed back to the home page. Verify your change is shown in the list.
 
-1. To continue with the exercise close the browser, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
+1. To continue with the exercise close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
 
 ## Implement code to handle the `Delete` functionality
 
@@ -313,7 +313,8 @@ In this section you add code to create a form in the *Delete.cshtml* file to ena
 
 When you are ready to end the exercise:
 
-* Close the browser, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**. 
+* Close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**. 
+
 * Stop the Fruit API by entering  `Ctrl + C` in the terminal it's running in.
 
 ## Review
