@@ -4,13 +4,14 @@ lab:
     module: 'Module: Interact with an ASP.NET Core minimal API'
 ---
 
-In this exercise, you'll run an ASP.NET Core minimal API locally and explore the API and the underlying code. 
+In this exercise, you run an ASP.NET Core minimal API locally and explore the API and the underlying code. You also publish the API to Azure App Service. 
 
 After you complete this exercise, you'll be able to:
 
 * Navigate a documented API
 * Determine endpoints for HTTP operations
 * Identify API requirements for HTTP operations
+* Publish an app to Azure App Service
 
 ## Prerequisites
 
@@ -19,6 +20,9 @@ To complete the exercise you need to have the following installed on your system
 * [Visual Studio Code](https://code.visualstudio.com)
 * [The latest .NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
 * [The C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) for Visual Studio Code
+* The [Azure Resources](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureresourcegroups) extension for Visual Studio Code.
+* [The Azure App Service](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice) extension for Visual Studio Code.
+* An Azure account with an active subscription. If you don't already have one, you can sign up for a free trial at [https://azure.com/free](https://azure.com/free).
 
 **Estimated exercise completion time**: 30 minutes
 
@@ -181,9 +185,67 @@ In this section you:
 
 1. Run the `GET` command in the **Get all fruit in list** section and note that the record for *Apple* is now deleted.
 
-When you are ready to end the exercise:
+When you are ready to move to the next section of the exercise:
 
 * Close the browser and stop the Fruit API by entering  `Ctrl + C` in the terminal it's running in.
+
+## Publish the API to Azure App Service
+
+In this section you:
+
+* Use the Azure Resources extension to publish the API to Azure App Service
+
+### Task 1: Sign in to Azure
+
+1. Select the Azure Resources extension to open the panel.
+
+    ![Screenshot showing the Azure Resources extension icon and initial options.](media/01-azure-resources-ext.png)
+
+1. Select **Sign in to Azure...**
+
+    A browser window will open prompting you to sign in to your Azure account. You can close this window after the sign in process is completed. 
+
+1. After the sign in is complete the extension will display a list of available subscriptions in your account. An example is shown in the following screenshot.
+
+    ![Screenshot showing the contents of the extension panel after sign in.](media/01-azure-subscriptions.png)
+
+### Task 2: Create a new web app
+
+1. Select Ctrl + Shift + P to open the command palette and type **Create new web app** and select the **Azure App Service: Create New Web App... (advanced)** option from the list. 
+
+1. If your account has multiple subscriptions you will be prompted to select the subscription you want to use for the deployment. 
+
+1. Enter a globally unique name for the new web app. You can try `fruitapi-<name>` and replace `<name>` with your name or initials.
+
+1. Select **+Create new resource group** and accept the default value or enter `fruitapi-rg`.
+
+1. Select **.NET 7 (STS)** for the runtime stack.
+
+1. Select **Linux** for the operating system
+
+1. Select a location for the new resources that is near you.
+
+1. Select **Create a new App Service plan** and accept the default value or enter another name. 
+
+1. Select **Free (F1) Try out Azure at no cost** for the pricing tier.
+
+1. Select **Skip for now** when prompted for a new Application Insights resource.
+
+The tool will create the necessary resources in Azure and compile the code.
+
+### Task 3: Deploy the web app and browse the running site
+
+1. After the resources are create and the code has completed compiling a window will pop-up prompting you to **Deploy**, select the **Deploy** option. 
+
+    The system will build a release version of the code and deploy it to the resources you created earlier.
+
+1. When the deployment has completed a new pop-up will appear with the option to **Browse Website**, select **Browse Website**.
+
+1. In the browser window that opens add `/swagger` to the end of the URL. 
+
+Congratulations, you have successfully deployed the API to Azure App Service.
+
+>**Note:** It's a good practice to delete resources from Azure that you no longer need. You can remove all of the resources created in this section of the exercise by deleting the resource group created earlier in the Azure portal.
 
 ## Review
 
@@ -192,3 +254,4 @@ In this exercise you learned how to:
 * Navigate a documented API
 * Determine endpoints for HTTP operations
 * Identify API requirements for HTTP operations
+* Publish an app to Azure App Service 
