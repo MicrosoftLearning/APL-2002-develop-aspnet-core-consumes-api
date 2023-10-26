@@ -211,7 +211,7 @@ In this section you:
 
 ### Task 2: Create a new web app
 
-1. Select Ctrl + Shift + P to open the command palette and type **Create new web app** and select the **Azure App Service: Create New Web App... (advanced)** option from the list. 
+1. Select **Ctrl + Shift + P** to open the command palette and type **Create new web app** to filter the list and select the **Azure App Service: Create New Web App... (advanced)** option. 
 
 1. If your account has multiple subscriptions you will be prompted to select the subscription you want to use for the deployment. 
 
