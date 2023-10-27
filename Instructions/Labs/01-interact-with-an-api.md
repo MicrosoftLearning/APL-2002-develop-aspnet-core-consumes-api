@@ -235,7 +235,9 @@ The tool will create the necessary resources in Azure and compile the code.
 
 ### Task 3: Deploy the web app and browse the running site
 
-1. After the resources are create and the code has completed compiling a window will pop-up prompting you to **Deploy**, select the **Deploy** option. 
+1. After the resources are created in the cloud environment, a notification message will appear in the Azure Activity Log tab ("Create Web App .. Succeeded").
+
+1. Expand the Azure Resources overview and select the newly created Web app. Click **Deploy to Web App** 
 
     The system will build a release version of the code and deploy it to the resources you created earlier.
 
