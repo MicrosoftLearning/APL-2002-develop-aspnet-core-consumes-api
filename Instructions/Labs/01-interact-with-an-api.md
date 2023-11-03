@@ -194,6 +194,7 @@ When you are ready to move to the next section of the exercise:
 In this section you:
 
 * Use the Azure Resources extension to publish the API to Azure App Service
+* Use the [Azure App Service extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice) to "Create new web app"
 
 ### Task 1: Sign in to Azure
 
