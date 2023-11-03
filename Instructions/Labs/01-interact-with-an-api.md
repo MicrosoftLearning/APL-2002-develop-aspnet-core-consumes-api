@@ -240,6 +240,11 @@ The tool will create the necessary resources in Azure and compile the code.
 
     The system will build a release version of the code and deploy it to the resources you created earlier.
 
+1. If no popup shows up, find the App Service resource from Azure Resources extension.
+   1. Make sure the project directory is managed by git.
+   2. Right click Deployments -> Select "Configure Deployment Source" -> Select "LocalGit".
+   3. Right click the App Service app -> Click "Deploy".
+
 1. When the deployment has completed a new pop-up will appear with the option to **Browse Website**, select **Browse Website**.
 
 1. In the browser window that opens add `/swagger` to the end of the URL. 
