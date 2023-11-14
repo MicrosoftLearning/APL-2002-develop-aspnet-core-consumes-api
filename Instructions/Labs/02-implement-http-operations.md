@@ -166,7 +166,7 @@ In this section you add code to the project to enable the **Add to list**, **Edi
 
 1. Select the *Add.cshtml.cs* file in the  **Explorer** pane to open it for editing.
 
-1. Add the following code between the `// Begin GET operation code` and `// End GET operation code` comments.
+1. Add the following code between the `// Begin POST operation code` and `// End POST operation code` comments.
 
     ```csharp
     public async Task<IActionResult> OnPost()
