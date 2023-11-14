@@ -193,7 +193,8 @@ When you are ready to move to the next section of the exercise:
 
 In this section you:
 
-* Use the Azure Resources extension to publish the API to Azure App Service
+* Use the Azure Resources extension to connect to Azure
+* Use the Azure App Service extension to publish the API to App Service
 
 ### Task 1: Sign in to Azure
 
