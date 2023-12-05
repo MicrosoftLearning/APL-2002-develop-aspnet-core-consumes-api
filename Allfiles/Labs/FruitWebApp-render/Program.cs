@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddHttpClient("FruitAPI", httpClient =>
 {
-    httpClient.BaseAddress = new Uri("https://fruitapi-testing.azurewebsites.net/fruitlist/");
+    httpClient.BaseAddress = new Uri("http://localhost:5050/fruitlist/");
 });
 
 
