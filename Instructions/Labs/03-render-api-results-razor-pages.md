@@ -92,7 +92,7 @@ In this section you download the code for the Fruit web app and the Fruit API. Y
 
 >**Note:** Take time to review the code in each of the files being edited throughout this exercise. The code is heavily commented and can help you understand the code base.
 
-## Implement code to render data on the `Index` page
+## Implement code to render data on the Index page
 
 The Fruit web app displays the API sample data on the home page. You need to add code to iterate through the sample data returned by the HTTP `GET` operation performed in the code-behind file.
 
@@ -160,7 +160,7 @@ The Fruit web app displays the API sample data on the home page. You need to add
 
 1. To continue with the exercise close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
 
-## Implement code to handle the `Add to list` functionality
+## Implement code to handle the **Add to list** functionality
 
 The add, edit, and delete operations are each handled on a separate *.cshtml* page in the project. In this section you add code to create a form in the *Add.cshtml* file to enable adding data to the list.
 
@@ -212,7 +212,7 @@ The add, edit, and delete operations are each handled on a separate *.cshtml* pa
 
 1. To continue with the exercise close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
 
-## Implement code to handle the `Edit` functionality
+## Implement code to handle the **Edit** functionality
 
 In this section you add code to create a form in the *Edit.cshtml* file to enable editing data to the list.
 
@@ -264,7 +264,7 @@ In this section you add code to create a form in the *Edit.cshtml* file to enabl
 
 1. To continue with the exercise close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
 
-## Implement code to handle the `Delete` functionality
+## Implement code to handle the **Delete** functionality
 
 In this section you add code to create a form in the *Delete.cshtml* file to enable deleting data from the list.
 
@@ -315,7 +315,7 @@ When you are ready to end the exercise:
 
 * Close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**. 
 
-* Stop the Fruit API by entering  `Ctrl + C` in the terminal it's running in.
+* Stop the Fruit API by entering  **Ctrl + C** in the terminal it's running in.
 
 ## Review
 

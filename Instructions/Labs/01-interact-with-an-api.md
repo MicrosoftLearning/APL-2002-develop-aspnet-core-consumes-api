@@ -187,7 +187,7 @@ In this section you:
 
 When you are ready to move to the next section of the exercise:
 
-* Close the browser and stop the Fruit API by entering  `Ctrl + C` in the terminal it's running in.
+* Close the browser and stop the Fruit API by entering  **Ctrl + C** in the terminal it's running in.
 
 ## Publish the API to Azure App Service
 

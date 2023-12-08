@@ -114,7 +114,7 @@ The Fruit web app displays the API sample data on the home page. You need to add
 
 1. Save the changes to *Program.cs*.
 
-### Task 2: Implement the `GET` operation
+### Task 2: Implement the GET operation
 
 1. Select the *Index.cshtml.cs* file in the  **Explorer** pane to open it for editing.
 
@@ -158,11 +158,11 @@ The Fruit web app displays the API sample data on the home page. You need to add
 
 1. To continue with the exercise close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
 
-## Implement code for the `POST`, `PUT`, and  `DELETE` operations
+## Implement code for the POST, PUT, and  DELETE operations
 
 In this section you add code to the project to enable the **Add to list**, **Edit**, and **Delete** functionality in the web app. 
 
-### Task 1: Implement the `POST` operation
+### Task 1: Implement the POST operation
 
 1. Select the *Add.cshtml.cs* file in the  **Explorer** pane to open it for editing.
 
@@ -208,7 +208,7 @@ In this section you add code to the project to enable the **Add to list**, **Edi
 
 1. To continue with the exercise close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
 
-### Task 1: Implement the `PUT` operation
+### Task 1: Implement the PUT operation
 
 1. Select the *Edit.cshtml.cs* file in the  **Explorer** pane to open it for editing.
 
@@ -256,7 +256,7 @@ In this section you add code to the project to enable the **Add to list**, **Edi
 
 1. To continue with the exercise close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
 
-### Task 1: Implement the `DELETE` operation
+### Task 1: Implement the DELETE operation
 
 1. Select the *Delete.cshtml.cs* file in the  **Explorer** pane to open it for editing.
 
@@ -301,7 +301,7 @@ When you are ready to end the exercise:
 
 * Close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**. 
 
-* Stop the Fruit API by entering  `Ctrl + C` in the terminal it's running in.
+* Stop the Fruit API by entering  **Ctrl + C** in the terminal it's running in.
 
 ## Review
 
