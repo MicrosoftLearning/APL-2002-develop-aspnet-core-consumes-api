@@ -291,9 +291,8 @@ In this section you add code to the project to enable the **Add to list**, **Edi
 
 1. In the Visual Studio Code top menu select **Run \| Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
 
-1. Choose an item in the list to delete and select the **Delete** button. 
-
-1. Edit the **Fruit Name** and the **Available?** field, then select **Update**.
+1. Choose an item in the list to delete and select the **Delete** button.
+2. On the Delete page, verify that the item you selected is displayed, and click the **Delete** button.
 
 1. Verify that the item no longer appears in the list. The success/failure message near the top of the page will notify you if there was an issue.
 
