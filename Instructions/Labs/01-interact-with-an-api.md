@@ -18,7 +18,7 @@ After you complete this exercise, you'll be able to:
 To complete the exercise you need to have the following installed on your system:
 
 * [Visual Studio Code](https://code.visualstudio.com)
-* [The latest .NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
+* [The latest .NET 8.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 * [The C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) for Visual Studio Code
 * The [Azure Resources](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureresourcegroups) extension for Visual Studio Code.
 * [The Azure App Service](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice) extension for Visual Studio Code.
@@ -220,7 +220,7 @@ In this section you:
 
 1. Select **+Create new resource group** and accept the default value or enter `fruitapi-rg`.
 
-1. Select **.NET 7 (STS)** for the runtime stack.
+1. Select **.NET 8 (LTS)** for the runtime stack.
 
 1. Select **Linux** for the operating system
 
