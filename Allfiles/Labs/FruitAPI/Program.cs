@@ -24,15 +24,13 @@ using (var scope = app.Services.CreateScope())
     dbContext.Database.EnsureCreated();
 }
 
-var fruits = app.MapGroup("fruits");
-
-fruits.MapGet("", static async (FruitDb db) =>
+app.MapGet("/fruits", static async (FruitDb db) =>
         await db.Fruits.ToListAsync() ?? [])
     .Produces<Fruit[]>(200)
     .WithTags("get", "fruits")
     .WithSummary("Get all fruits");
 
-fruits.MapGet("{id}", static async (int id, FruitDb db) =>
+app.MapGet("/fruits/{id}", static async (int id, FruitDb db) =>
     await db.Fruits.FindAsync(id)
         is Fruit fruit
             ? Results.Ok(fruit)
@@ -42,7 +40,7 @@ fruits.MapGet("{id}", static async (int id, FruitDb db) =>
     .WithTags("get", "fruit")
     .WithSummary("Get a fruit by Id");
 
-app.MapPost("", async (Fruit fruit, FruitDb db) =>
+app.MapPost("/fruits", async (Fruit fruit, FruitDb db) =>
 {
     db.Fruits.Add(fruit);
     await db.SaveChangesAsync();
@@ -54,7 +52,7 @@ app.MapPost("", async (Fruit fruit, FruitDb db) =>
     .WithSummary("Create a new fruit");
 
 
-app.MapPut("{id}", async (int id, Fruit inputFruit, FruitDb db) =>
+app.MapPut("/fruits/{id}", async (int id, Fruit inputFruit, FruitDb db) =>
 {
     var fruit = await db.Fruits.FindAsync(id);
 
@@ -72,7 +70,7 @@ app.MapPut("{id}", async (int id, Fruit inputFruit, FruitDb db) =>
     .WithSummary("Update a fruit by Id");
 
 
-app.MapDelete("{id}", async (int id, FruitDb db) =>
+app.MapDelete("/fruits/{id}", async (int id, FruitDb db) =>
 {
     if (await db.Fruits.FindAsync(id) is Fruit fruit)
     {
