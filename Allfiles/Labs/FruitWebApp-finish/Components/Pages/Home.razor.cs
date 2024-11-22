@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using FruitWebApp.Models;
 using System.Text.Json;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace FruitWebApp.Components.Pages;
 
@@ -9,6 +10,9 @@ public partial class Home : ComponentBase
     // IHttpClientFactory set using dependency injection 
     [Inject]
     public required IHttpClientFactory HttpClientFactory { get; set; }
+
+    [Inject]
+    private NavigationManager? NavigationManager { get; set; }
 
     // Add the data model and bind the form data to the page model properties
     // Enumerable since an array is expected as a response
@@ -36,6 +40,12 @@ public partial class Home : ComponentBase
             Console.WriteLine($"Failed to load fruit list. Status code: {response.StatusCode}");
         }
         // End GET operation code
+    }
+
+    private void delButtonHandler()
+    {
+        Console.WriteLine("Delete button clicked: " );
+        //NavigationManager?.NavigateTo("/delete/{delId}");
     }
 
 }

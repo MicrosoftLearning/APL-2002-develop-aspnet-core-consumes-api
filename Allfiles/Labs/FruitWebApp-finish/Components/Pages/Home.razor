@@ -70,9 +70,9 @@
                                 <i class="bi bi-pencil-square"></i> Edit
                             </a>
                             @* Routes to the Delete page and passes the id of the record. *@
-                            <a class="btn btn-danger mx-2" href="/delete/@obj.id">
-                                <i class="bi bi-trash"></i> Delete
-                            </a>
+                            <button class="btn btn-danger mx-2" @onclick="() => delButtonHandler()">
+                                <i class="bi bi-trash" /> Delete
+                            </button>
                         </div>
                     </td>
                 </tr>
