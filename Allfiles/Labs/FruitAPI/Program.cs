@@ -24,6 +24,12 @@ using (var scope = app.Services.CreateScope())
     dbContext.Database.EnsureCreated();
 }
 
+app.MapGet("/", context =>
+{
+    context.Response.Redirect("/fruits");
+    return Task.CompletedTask;
+});
+
 app.MapGet("/fruits", static async (FruitDb db) =>
         await db.Fruits.ToListAsync() ?? [])
     .Produces<Fruit[]>(200)
