@@ -21,6 +21,8 @@ public partial class Home : ComponentBase
     // Begin GET operation code
     protected override async Task OnInitializedAsync()
     {
+        Console.WriteLine("Got here");
+        
         // Create the HTTP client using the FruitAPI named factory
         var httpClient = HttpClientFactory.CreateClient("FruitAPI");
 
@@ -44,7 +46,7 @@ public partial class Home : ComponentBase
 
     private void delButtonHandler()
     {
-        Console.WriteLine("Delete button clicked: " );
+        Console.WriteLine("Delete button clicked: ");
         //NavigationManager?.NavigateTo("/delete/{delId}");
     }
 
