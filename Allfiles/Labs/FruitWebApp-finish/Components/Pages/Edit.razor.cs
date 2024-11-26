@@ -57,7 +57,8 @@ public partial class Edit : ComponentBase
         var httpClient = HttpClientFactory.CreateClient("FruitAPI");
 
         // Store the updated data in a JSON object
-        var jsonContent = new StringContent(JsonSerializer.Serialize(_fruitList), Encoding.UTF8, "application/json");
+        var jsonContent = new StringContent(JsonSerializer.Serialize(_fruitList), 
+            Encoding.UTF8, "application/json");
 
         // Execute the PUT request
         using HttpResponseMessage response = await httpClient.PutAsync($"/fruits/{Id}", jsonContent);
