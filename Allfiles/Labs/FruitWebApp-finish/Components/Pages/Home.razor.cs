@@ -14,8 +14,8 @@ public partial class Home : ComponentBase
     [Inject]
     private NavigationManager? NavigationManager { get; set; }
 
-    // Add the data model and bind the form data to the page model properties
-    // Enumerable since an array is expected as a response
+    /* Add the data model, enumerable since an array is expected as a response */
+
     private IEnumerable<FruitModel>? _fruitList;
 
     // Begin GET operation code

@@ -43,7 +43,7 @@ public partial class Add : ComponentBase
         }
         else
         {
-            Console.WriteLine("Failed to add fruit");
+            Console.WriteLine("Failed to add fruit. Status code: {response.StatusCode}");
         }
     }
     // End POST operation code

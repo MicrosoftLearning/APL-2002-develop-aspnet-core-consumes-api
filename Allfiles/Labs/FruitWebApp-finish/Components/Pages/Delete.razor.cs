@@ -34,8 +34,6 @@ public partial class Delete : ComponentBase
         // Create the HTTP client using the FruitAPI named factory
         var httpClient = HttpClientFactory.CreateClient("FruitAPI");
 
-        Console.WriteLine("Parameter: " + Id);
-
         // Retrieve record information
         using HttpResponseMessage response = await httpClient.GetAsync($"/fruits/{Id}");
 
@@ -47,7 +45,7 @@ public partial class Delete : ComponentBase
         }
         else
         {
-            Console.WriteLine("Failed to retrieve fruit");
+            Console.WriteLine("Failed to retrieve fruit. Status code: {response.StatusCode}");
         }
     }
 
@@ -67,7 +65,7 @@ public partial class Delete : ComponentBase
         }
         else
         {
-            Console.WriteLine("Failed to delete fruit");
+            Console.WriteLine("Failed to delete fruit. Status code: {response.StatusCode}");
         }
     }
 }

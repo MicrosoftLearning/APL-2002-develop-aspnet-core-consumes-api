@@ -46,7 +46,7 @@ public partial class Edit : ComponentBase
         }
         else
         {
-            Console.WriteLine("Failed to retrieve fruit");
+            Console.WriteLine("Failed to retrieve fruit. Status code: {response.StatusCode}");
         }
     }
 
@@ -69,7 +69,7 @@ public partial class Edit : ComponentBase
         }
         else
         {
-            Console.WriteLine("Failed to update fruit with edits.");
+            Console.WriteLine("Failed to update fruit with edits. Status code: {response.StatusCode}");
         }
     }
 }
