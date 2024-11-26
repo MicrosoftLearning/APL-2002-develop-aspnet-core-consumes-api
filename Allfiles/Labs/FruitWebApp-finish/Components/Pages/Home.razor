@@ -1,4 +1,5 @@
 ﻿@page "/"
+@rendermode InteractiveServer
 
 <PageTitle>Home</PageTitle>
 
@@ -63,14 +64,13 @@
                         }
                     }
                     <td width="30%" class="text-center">
-                        @*  The following div contains information to handle the edit and delete functions. *@
+                        @* The following div renders the Edit and Delete buttons that pass the Id 
+                           to a function that handles the navigation and passes the Id to the page. *@
                         <div class="w-75 btn-group btn-group-sm" role="group" style="text-align:center">
-                            @* Routes to the Edit page and passes the id of the record. *@
-                            <a asp-page="Edit" asp-route-id="@obj.id" class="btn btn-primary  mx-2">
+                            <button class="btn btn-primary  mx-2" @onclick="() => EditButton(obj.id)">
                                 <i class="bi bi-pencil-square"></i> Edit
-                            </a>
-                            @* Routes to the Delete page and passes the id of the record. *@
-                            <button class="btn btn-danger mx-2" @onclick="delButtonHandler">
+                            </button>
+                            <button class="btn btn-danger mx-2" @onclick="() => DeleteButton(obj.id)">
                                 <i class="bi bi-trash" /> Delete
                             </button>
                         </div>

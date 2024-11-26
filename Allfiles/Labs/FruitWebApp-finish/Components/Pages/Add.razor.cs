@@ -12,12 +12,11 @@ public partial class Add : ComponentBase
     [Inject]
     public required IHttpClientFactory HttpClientFactory { get; set; }
 
+    // NavigationManager set using dependency injection
     [Inject]
     private NavigationManager? NavigationManager { get; set; }
 
-    // Add the data model and bind the form data to the page model properties
-    // Enumerable since an array is expected as a response
-
+    // Add the data model and bind the form data to it
     [SupplyParameterFromForm]
     private FruitModel? _fruitList { get; set; }
 
@@ -27,7 +26,6 @@ public partial class Add : ComponentBase
     private async Task Submit()
     {
         // Serialize the information to be added to the database
-        Console.WriteLine("Adding fruit: " + JsonSerializer.Serialize(_fruitList));
         var jsonContent = new StringContent(JsonSerializer.Serialize(_fruitList),
             Encoding.UTF8,
             "application/json");
@@ -35,11 +33,10 @@ public partial class Add : ComponentBase
         // Create the HTTP client using the FruitAPI named factory
         var httpClient = HttpClientFactory.CreateClient("FruitAPI");
 
-        // Execute the POST request and store the response. The parameters in PostAsync 
+        // Execute the POST request and store the response. The response will contain the new record's ID
         using HttpResponseMessage response = await httpClient.PostAsync("/fruits", jsonContent);
 
-        // Return to the home (Index) page and add a temporary success/failure 
-        // message to the page.
+        // Check if the operation was successful, and navigate to the home page if it was
         if (response.IsSuccessStatusCode)
         {
             NavigationManager?.NavigateTo("/");

@@ -5,9 +5,10 @@ using System.Text.Json;
 using System.Text;
 using System;
 
+
 namespace FruitWebApp.Components.Pages;
 
-public partial class Delete : ComponentBase
+public partial class Edit : ComponentBase
 {
     // IHttpClientFactory set using dependency injection 
     [Inject]
@@ -17,27 +18,25 @@ public partial class Delete : ComponentBase
     [Inject]
     private NavigationManager? NavigationManager { get; set; }
 
-    // Add the data model and bind the form data to the page model properties
+    // Add the data model and bind the form data to it
     [SupplyParameterFromForm]
     private FruitModel? _fruitList { get; set; }
 
-    // Add the parameter to the page
+    // Get the Id of the record to edit from the query string
     [Parameter]
     public int? Id { get; set; }
 
-    // Initialize the fruit list
-    protected override void OnInitialized() => _fruitList ??= new();
+    // Create instance of data model when page is initialized
+    protected override void OnInitialized() => _fruitList ??= new FruitModel();
 
-    // Load the record information when the page initializes
+    // Retrieve the record information when the page is initialized
     protected override async Task OnInitializedAsync()
     {
         // Create the HTTP client using the FruitAPI named factory
         var httpClient = HttpClientFactory.CreateClient("FruitAPI");
 
-        Console.WriteLine("Parameter: " + Id);
-
         // Retrieve record information
-        using HttpResponseMessage response = await httpClient.GetAsync($"/fruits/{Id}");
+        using HttpResponseMessage response = await httpClient.GetAsync("/fruits/" + Id.ToString());
 
         if (response.IsSuccessStatusCode)
         {
@@ -57,17 +56,20 @@ public partial class Delete : ComponentBase
         // Create the HTTP client using the FruitAPI named factory
         var httpClient = HttpClientFactory.CreateClient("FruitAPI");
 
-        // Execute the DELETE request and store the response
-        using HttpResponseMessage response = await httpClient.DeleteAsync("/fruits/" + Id.ToString());
+        // Store the updated data in a JSON object
+        var jsonContent = new StringContent(JsonSerializer.Serialize(_fruitList), Encoding.UTF8, "application/json");
 
-        // Return to the home page 
+        // Execute the PUT request
+        using HttpResponseMessage response = await httpClient.PutAsync($"/fruits/{Id}", jsonContent);
+
+        // If the response is successful, navigate back to the home page 
         if (response.IsSuccessStatusCode)
         {
             NavigationManager?.NavigateTo("/");
         }
         else
         {
-            Console.WriteLine("Failed to delete fruit");
+            Console.WriteLine("Failed to update fruit with edits.");
         }
     }
 }
