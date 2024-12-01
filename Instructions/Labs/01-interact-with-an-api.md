@@ -18,7 +18,7 @@ After you complete this exercise, you'll be able to:
 To complete the exercise you need to have the following installed on your system:
 
 * [Visual Studio Code](https://code.visualstudio.com)
-* [The latest .NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
+* [The latest .NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 * [The C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) for Visual Studio Code
 * The [Azure Resources](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureresourcegroups) extension for Visual Studio Code.
 * [The Azure App Service](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice) extension for Visual Studio Code.
@@ -110,13 +110,13 @@ In this section you:
 
 ### Task 1: Perform a `GET` operation
 
-1. Expand the **GET** operation in the **Get all fruit** section by clicking anywhere in the **GET** operation box.
+1. Expand the **GET** operation with the **Get all fruits** descriptor by clicking anywhere in the **GET** operation box.
 
 1. Explore the sections of the operation and note the information shown in the following table.
 
     | Section | Description |
     |---|--|
-    | **Endpoint** | Shown in the header of the operation. The endpoint is shown as `/fruitlist`. The full URI is the base URL for the API appended with the specified endpoint, `http://localhost:5050/fruitlist` in our example. |
+    | **Endpoint** | Shown in the header of the operation. The endpoint is shown as `/fruits`. The full URI is the base URL for the API appended with the specified endpoint, `http://localhost:5050/fruits` in our example. |
     | **Parameters** | None required for this operation. |
     | **Media type** | Specifies the media type encoding the operation will return. |
     | **Example Value** | Displays the schema of the data returned by the operation. Note that this operation returns a JSON array. |
@@ -130,13 +130,13 @@ In this section you:
 
 ### Task 2: Perform a `POST` operation
 
-1. Expand the **POST** operation in the **Add fruit to list** section by clicking anywhere in the **POST** operation box.
+1. Expand the **POST** operation with the **Create a new fruit** descriptor by clicking anywhere in the **POST** operation box.
 
 1. Explore the sections of the operation and note the information shown in the following table.
 
     | Section | Description |
     |---|--|
-    | **Endpoint** | The endpoint is shown as `/fruitlist`. The full URI is the base URL for the API appended with the specified endpoint, `http://localhost:5050/fruitlist` in our example. |
+    | **Endpoint** | The endpoint is shown as `/fruits`. The full URI is the base URL for the API appended with the specified endpoint, `http://localhost:5050/fruits` in our example. |
     | **Parameters** | None required for this operation. |
     | **Request body** | The **Request body** is required since the API is expecting data to add to the list and it is expecting the media type `application/json`. |
     | **Example Value** | Displays the schema of the data the API is expecting to receive. |  
@@ -160,17 +160,17 @@ In this section you:
     * **Request URL:** The URL accessed in the operation.
     * **Server response:**  Shows the success code from the operation and the **Response body** displays the record added to the database.
 
-1. Run the `GET` command in the **Get all fruit in list** section and note that a record for *Pear* is now included.
+1. Run the `GET` command in the **Get all fruits** section and note that a record for *Pear* is now included.
 
 ### Task 3: Perform a `DELETE` operation
 
-1. Expand the **DELETE** operation in the **Delete fruit by Id** section by clicking anywhere in the **DELETE** operation box.
+1. Expand the **DELETE** operation with the **Delete a fruit by Id** descriptor by clicking anywhere in the **DELETE** operation box.
 
 1. Explore the sections of the operation and note the information shown in the following table.
 
     | Section | Description |
     |---|--|
-    | **Endpoint** | The endpoint is shown as `/fruitlist/{id}`. The full URI is the base URL for the API appended with the specified `id` for deletion. For example, `http://localhost:5050/fruitlist/1` points to the record where `id` equals `1`.
+    | **Endpoint** | The endpoint is shown as `/fruits/{id}`. The full URI is the base URL for the API appended with the specified `id` for deletion. For example, `http://localhost:5050/fruits/1` points to the record where `id` equals `1`.
     | **Parameters** | Requires the `id` of the record to be passed in the request URL. |
 
 1. To run the operation select the **Try it out** button. 
@@ -183,7 +183,7 @@ In this section you:
     * **Response body:** Displays the deleted record.
     * **Code:**  Shows the success code from the operation.
 
-1. Run the `GET` command in the **Get all fruit in list** section and note that the record for *Apple* is now deleted.
+1. Run the `GET` command in the **Get all fruits** section and note that the record for *Apple* is now deleted.
 
 When you are ready to move to the next section of the exercise:
 
@@ -220,7 +220,7 @@ In this section you:
 
 1. Select **+Create new resource group** and accept the default value or enter `fruitapi-rg`.
 
-1. Select **.NET 7 (STS)** for the runtime stack.
+1. Select **.NET 8 (LTS)** for the runtime stack.
 
 1. Select **Linux** for the operating system
 

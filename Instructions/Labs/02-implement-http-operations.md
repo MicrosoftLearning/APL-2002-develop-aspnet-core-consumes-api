@@ -11,14 +11,14 @@ In this exercise, you learn how to add code to an ASP.NET Core Razor Pages app t
 After you complete this exercise, you will be able to:
 
 * Implement `IHttpClientFactory` as the HTTP client
-* Implement HTTP operations in ASP.NET Core Razor Pages
+* Implement HTTP operations in ASP.NET Blazor projects
 
 ## Prerequisites
 
 To complete the exercise you need to have the following installed on your system:
 
 * [Visual Studio Code](https://code.visualstudio.com)
-* [The latest .NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
+* [The latest .NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 * [The C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) for Visual Studio Code
 
 **Estimated exercise completion time**: 30 minutes
@@ -27,7 +27,7 @@ To complete the exercise you need to have the following installed on your system
 
 This exercise has two components:
 
-* An app that sends HTTP requests to an API. The app runs on `http://localhost:5010`
+* An app that sends HTTP requests to an API.
 * An API that responds to HTTP requests. The API runs on `http://localhost:5050`
 
 ![Decorative](media/02-architecture.png)
