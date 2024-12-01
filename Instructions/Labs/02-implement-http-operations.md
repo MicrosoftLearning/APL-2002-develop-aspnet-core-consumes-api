@@ -27,8 +27,8 @@ To complete the exercise you need to have the following installed on your system
 
 This exercise has two components:
 
-* An app that sends HTTP requests to an API.
-* An API that responds to HTTP requests. The API runs on `http://localhost:5050`
+* An app that sends HTTP requests to an API. The web app runs on `http://localhost:5010`.
+* An API that responds to HTTP requests. The API runs on `http://localhost:5050`.
 
 ![Decorative](media/02-architecture.png)
 
@@ -108,7 +108,7 @@ The Fruit web app displays the API sample data on the home page. You need to add
     // to "FruitAPI". The base address for API requests is also set.
     builder.Services.AddHttpClient("FruitAPI", httpClient =>
     {
-        httpClient.BaseAddress = new Uri("http://localhost:5050/fruitlist/");
+        httpClient.BaseAddress = new Uri("http://localhost:5050/");
     });
     ```
 
@@ -116,33 +116,37 @@ The Fruit web app displays the API sample data on the home page. You need to add
 
 ### Task 2: Implement the GET operation
 
-1. Select the *Index.cshtml.cs* file in the  **Explorer** pane to open it for editing.
+1. Select the *home.razor.cs* file in the  **Explorer** pane to open it for editing. It is located in the `Components/Pages` folder.
 
 1. Add the following code between the `// Begin GET operation code` and `// End GET operation code` comments.
 
     ```csharp
-    // OnGet() is async since HTTP requests should be performed async
-      public async Task OnGet()
-      {
-          // Create the HTTP client using the FruitAPI named factory
-          var httpClient = _httpClientFactory.CreateClient("FruitAPI");
+    protected override async Task OnInitializedAsync()
+    {
+        // Create the HTTP client using the FruitAPI named factory
+        var httpClient = HttpClientFactory.CreateClient("FruitAPI");
 
-          // Perform the GET request and store the response. The empty parameter
-          // in GetAsync doesn't modify the base address set in the client factory 
-          using HttpResponseMessage response = await httpClient.GetAsync("");
+        // Perform the GET request and store the response. The parameter
+        // in GetAsync specifies the endpoint in the API 
+        using HttpResponseMessage response = await httpClient.GetAsync("/fruits");
 
-          // If the request is successful deserialize the results into the data model
-          if (response.IsSuccessStatusCode)
-          {
-              using var contentStream = await response.Content.ReadAsStreamAsync();
-              FruitModels = await JsonSerializer.DeserializeAsync<IEnumerable<FruitModel>>(contentStream);
-          }
-      }
+        // If the request is successful deserialize the results into the data model
+        if (response.IsSuccessStatusCode)
+        {
+            using var contentStream = await response.Content.ReadAsStreamAsync();
+            _fruitList = await JsonSerializer.DeserializeAsync<IEnumerable<FruitModel>>(contentStream);
+        }
+        else
+        {
+            // If the request is unsuccessful, log the error message
+            Console.WriteLine($"Failed to load fruit list. Status code: {response.StatusCode}");
+        }
+    }
     ```
 
-1. Save the changes to *Index.cshtml.cs*.
+1. Save the changes to *Home.razor.cs*.
 
-1. Review the code in the *Index.cshtml.cs* file. Note where the `IHttpClientFactory` is added to the page with dependency injection. Also note that the data model is bound to the page by using the `[BindProperty]` attribute.
+1. Review the code in the *Home.razor.cs* file. Note where the `IHttpClientFactory` is added to the page with dependency injection.
 
 ### Task 3: Run the web app
 
