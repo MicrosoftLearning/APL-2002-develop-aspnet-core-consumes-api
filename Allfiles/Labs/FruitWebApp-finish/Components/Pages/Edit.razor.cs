@@ -29,7 +29,7 @@ public partial class Edit : ComponentBase
     // Create instance of data model when page is initialized
     protected override void OnInitialized() => _fruitList ??= new FruitModel();
 
-    // Retrieve the record information when the page is initialized
+    // Retrieve the data to populate the form for editing
     protected override async Task OnInitializedAsync()
     {
         // Create the HTTP client using the FruitAPI named factory
@@ -50,7 +50,7 @@ public partial class Edit : ComponentBase
         }
     }
 
-    // Submit the form data to the API
+    // Begin PUT operation code
     private async Task Submit()
     {
         // Create the HTTP client using the FruitAPI named factory
@@ -73,4 +73,5 @@ public partial class Edit : ComponentBase
             Console.WriteLine("Failed to update fruit with edits. Status code: {response.StatusCode}");
         }
     }
+    // End PUT operation code
 }

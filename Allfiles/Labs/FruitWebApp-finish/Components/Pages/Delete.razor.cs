@@ -28,7 +28,7 @@ public partial class Delete : ComponentBase
     // Initialize the fruit list
     protected override void OnInitialized() => _fruitList ??= new();
 
-    // Load the record information when the page initializes
+    //  Retrieve the data to populate the form for deletion
     protected override async Task OnInitializedAsync()
     {
         // Create the HTTP client using the FruitAPI named factory
@@ -49,7 +49,7 @@ public partial class Delete : ComponentBase
         }
     }
 
-    // Submit the form data to the API
+    // Begin DELETE operation code
     private async Task Submit()
     {
         // Create the HTTP client using the FruitAPI named factory
@@ -68,4 +68,5 @@ public partial class Delete : ComponentBase
             Console.WriteLine("Failed to delete fruit. Status code: {response.StatusCode}");
         }
     }
+    // End DELETE operation code
 }

@@ -39,8 +39,8 @@ public partial class Home : ComponentBase
             // If the request is unsuccessful, log the error message
             Console.WriteLine($"Failed to load fruit list. Status code: {response.StatusCode}");
         }
-        // End GET operation code
     }
+    // End GET operation code
 
     private void DeleteButton(int id) => NavigationManager!.NavigateTo($"/delete/{id}");
     private void EditButton(int id) => NavigationManager!.NavigateTo($"/edit/{id}");
