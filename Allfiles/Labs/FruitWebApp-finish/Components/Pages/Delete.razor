@@ -5,6 +5,7 @@
 @* Note: Many of the "class=" instances reference Bootstrap styles. *@
 
 @* Begin render Delete code block *@
+@* Data is deleted using a Razor form, the data model is bound to the form.*@
 <EditForm OnSubmit="Submit" FormName="DeleteFruit" Model="_fruitList">
 	@* 	The id for the data record is hidden because it needs to be available to the 
 		code-behind processing, but it's not displayed. *@

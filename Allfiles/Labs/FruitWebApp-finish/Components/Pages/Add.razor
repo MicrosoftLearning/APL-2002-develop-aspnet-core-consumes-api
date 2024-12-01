@@ -5,6 +5,7 @@
 @* Note: Many of the "class=" instances reference Bootstrap styles. *@
 
 @* Begin render Add code block *@
+@* Data is added using a Razor form, the data model is bound to the form.*@
 <EditForm OnSubmit="Submit" FormName="AddFruit" Model="_fruitList">
 	@* 	The _fruitList.id is here so the full data model is represented on the page.
 		The database behind the API will assign the id. *@

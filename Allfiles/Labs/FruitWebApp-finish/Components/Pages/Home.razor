@@ -38,8 +38,7 @@
 
         @* Begin render API data code block *@
         <tbody>
-            
-            @*  The Razor keyword @foreach is used to iterate through the
+            @*  The Razor explicit expression @foreach is used to iterate through the
                 data returned to the data model from the HTTP operations. *@
             @foreach (var obj in _fruitList ?? [])
             {

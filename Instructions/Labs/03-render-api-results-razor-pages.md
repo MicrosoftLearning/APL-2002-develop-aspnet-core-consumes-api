@@ -1,24 +1,24 @@
 ---
 lab:
-    title: 'Exercise: Render API responses in ASP.NET Core Razor Pages'
-    module: 'Module: Render API responses in ASP.NET Core Razor Pages'
+    title: 'Exercise: Render API responses in ASP.NET Core Blazor apps'
+    module: 'Module: Render API responses in ASP.NET Core Blazor apps'
 ---
 
-In this exercise, you learn how to add code to an ASP.NET Core Razor Pages app to render results from HTTP operations. This code is added to the *.cshtml* files. The code that performs the operations in the *.cshtml.cs* files is complete.
+In this exercise, you learn how to add code to an ASP.NET Core Blazor app to render results from HTTP operations. This code is added to the *.razor* files. The code that performs the operations in the *.razor.cs* files is complete.
 
 ## Objectives
 
 After you complete this exercise, you will be able to:
 
-* Implement Razor keywords in an app
-* Integrate C# code with Razor Pages syntax
+* Implement Razor syntax in an app
+* Integrate C# code with Razor syntax
 
 ## Prerequisites
 
 To complete the exercise you need to have the following installed on your system:
 
 * [Visual Studio Code](https://code.visualstudio.com)
-* [The latest .NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
+* [The latest .NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 * [The C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) for Visual Studio Code
 
 **Estimated exercise completion time**: 30 minutes
@@ -92,53 +92,50 @@ In this section you download the code for the Fruit web app and the Fruit API. Y
 
 >**Note:** Take time to review the code in each of the files being edited throughout this exercise. The code is heavily commented and can help you understand the code base.
 
-## Implement code to render data on the Index page
+## Implement code to render data on the Home page
 
 The Fruit web app displays the API sample data on the home page. You need to add code to iterate through the sample data returned by the HTTP `GET` operation performed in the code-behind file.
 
 ### Task 1: Add code to render data in a table
 
-1. Select the *Index.cshtml* file in the  **Explorer** pane to open it for editing.
+1. Select the *Home.razor* file in the  **Explorer** pane to open it for editing.
 
 1. Add the following code between the `@* Begin render API data code block *@` and `@* End render API data code block *@` comments.
 
-    ```csharp
+    ```razor
     <tbody>
-        
-        @*  The Razor keyword @foreach is used to iterate through the
+        @*  The Razor explicit expression @foreach is used to iterate through the
             data returned to the data model from the HTTP operations. *@
-        @foreach (var obj in Model.FruitModels)
+        @foreach (var obj in _fruitList ?? [])
         {
             <tr>
                 @* Display the name of the fruit. *@
                 <td width="50%">@obj.name</td>
-                @*  The following if statment is a Razor code block that changes the color 
-                    and icon of the available indicator in the page rendering. *@
+                @*  The following if statment changes the true/false of instock to Yes/No. *@
                 @{
                     if (@obj.instock)
                     {
                         <td width="20%" class="text-md-center">
-                            <i class="bi bi-check-circle" style="font-size: 1rem; color: green;"></i>&nbsp;Yes
+                            Yes
                         </td>
                     }
                     else
                     {
                         <td width="20%" class="text-md-center">
-                            <i class="bi bi-dash-circle" style="font-size: 1rem; color:red;"></i>&nbsp;No
+                            No
                         </td>
                     }
                 }
                 <td width="30%" class="text-center">
-                    @*  The following div contains information to handle the edit and delete functions. *@
+                    @* The following div renders the Edit and Delete buttons that pass the Id 
+                        to a function that handles the navigation and passes the Id to the page. *@
                     <div class="w-75 btn-group btn-group-sm" role="group" style="text-align:center">
-                        @* Routes to the Edit page and passes the id of the record. *@
-                        <a asp-page="Edit" asp-route-id="@obj.id" class="btn btn-primary  mx-2">
-                            <i class="bi bi-pencil-square"></i> Edit
-                        </a>
-                        @* Routes to the Delete page and passes the id of the record. *@
-                        <a asp-page="Delete" asp-route-id="@obj.id" class="btn btn-danger mx-2">
-                            <i class="bi bi-trash"></i> Delete
-                        </a>
+                        <button class="btn btn-primary  mx-2" @onclick="() => EditButton(obj.id)">
+                            Edit
+                        </button>
+                        <button class="btn btn-danger mx-2" @onclick="() => DeleteButton(obj.id)">
+                            Delete
+                        </button>
                     </div>
                 </td>
             </tr>
@@ -146,7 +143,7 @@ The Fruit web app displays the API sample data on the home page. You need to add
     </tbody>
     ```
 
-1. Save the changes to *Index.cshtml*, and review the comments in the code.
+1. Save the changes to *Home.razor*, and review the comments in the code.
 
 1. In the Visual Studio Code top menu select **Run \| Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
 
@@ -162,45 +159,44 @@ The Fruit web app displays the API sample data on the home page. You need to add
 
 ## Implement code to handle the **Add to list** functionality
 
-The add, edit, and delete operations are each handled on a separate *.cshtml* page in the project. In this section you add code to create a form in the *Add.cshtml* file to enable adding data to the list.
+The add, edit, and delete operations are each handled on a separate *.razor* page in the project. In this section you add code to create a form in the *Add.razor* file to enable adding data to the list.
 
 ### Task 1: Add code to create the add data form
 
-1. Select the *Add.cshtml* file in the  **Explorer** pane to open it for editing.
+1. Select the *Add.razor* file in the  **Explorer** pane to open it for editing.
 
 1. Add the following code between the `@* Begin render Add code block *@` and `@* End render Add code block *@` comments.
 
     ```csharp
-    <form method="post">
-        @* 	The FruitModels.id is here so the full data model is represented on the page.
+    @* Data is added using a Razor form, the data model is bound to the form.*@
+    <EditForm OnSubmit="Submit" FormName="AddFruit" Model="_fruitList">
+    	@* 	The _fruitList.id is here so the full data model is represented on the page.
     		The database behind the API will assign the id. *@
-    	<input hidden asp-for="FruitModels.id" />
+    	<InputNumber hidden="true" @bind-Value="_fruitList!.id" />
     	<div class="border p-3 mt-4" style="width:50%">
     		<div class="row pb-2">
     			<h2 class="text-primary pl-3">Add Fruit</h2>
     			<hr />
     		</div>
     		<div class="mb-3">
-    			<label asp-for="FruitModels.name" class="h5"></label><br/>
+    			<label class="h5"></label><br />
     			@* Empty text box for the name of the fruit to be added. *@
-    			<input type="text" asp-for="FruitModels.name" />
-    			<span asp-validation-for="FruitModels.name" class="text-danger"></span>
+    			<InputText @bind-Value="_fruitList!.name" />
     		</div>
     		<div class="mb-3">
-    			<label asp-for="FruitModels.instock" class="h5"></label><br/>
+    			<label class="h5"></label><br />
     			@* Render the true/false instock state from the record in an editable checkbox. *@
-    			<input type="checkbox" asp-for="FruitModels.instock" style="width:20px; height:20px" />
-    			<label class="h7"><i class="bi bi-arrow-left"></i>  Check the box if it's available.</label>
-    			<span asp-validation-for="FruitModels.instock" class="text-danger"></span>
+    			<InputCheckbox @bind-value="_fruitList!.instock" style="width:20px; height:20px" />
+    			<label class="h7">Check the box if it's available.</label>
     		</div>
     		@* Submit the addition or return to the Index page if the Add is cancelled.*@
-    		<button type="submit" class="btn btn-primary" style="width:150px;">Create</button>
-    		<a asp-page="Index" class="btn btn-secondary" style="width:150px;">Cancel</a>
+    		<button @onclick="() => Submit()" class="btn btn-primary" style="width:150px;">Create</button>
+    		<a class="btn btn-secondary" style="width:150px;" href="/">Cancel</a>
     	</div>
-    </form>
+    </EditForm>
     ```
-
-1. Save the changes to *Add.cshtml*, and review the comments in the code.
+    
+1. Save the changes to *Add.razor*, and review the comments in the code.
 
 1. In the Visual Studio Code top menu select **Run \| Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
 
@@ -218,15 +214,16 @@ In this section you add code to create a form in the *Edit.cshtml* file to enabl
 
 ### Task 1: Add code for the edit form
 
-1. Select the *Edit.cshtml* file in the  **Explorer** pane to open it for editing.
+1. Select the *Edit.razor* file in the  **Explorer** pane to open it for editing.
 
 1. Add the following code between the `@* Begin render Edit code block *@` and `@* End render Edit code block *@` comments.
 
     ```csharp
-    <form method="post">
-        @* 	The id for the data record is hidden because it needs to be available to the 
+    @* Data is edited using a Razor form, the data model is bound to the form.*@
+    <EditForm OnSubmit="Submit" FormName="EditFruit" Model="_fruitList">
+    	@* 	The id for the data record is hidden because it needs to be available to the 
     		code-behind processing, but it's not displayed. *@
-    	<input hidden asp-for="FruitModels.id" />
+        <InputNumber hidden="true" @bind-value="_fruitList!.id" />
     	<div class="border p-3 mt-4" style="width:50%">
     		<div class="row pb-2">
     			<h2 class="text-primary pl-3">Edit Fruit</h2>
@@ -234,25 +231,23 @@ In this section you add code to create a form in the *Edit.cshtml* file to enabl
     		</div>
     		<div class="mb-3">
     			<label asp-for="FruitModels.name" class="h5"></label><br/>
-    			@* Render the current name of the fruit in an editable text box. *@
-    			<input type="text" asp-for="FruitModels.name" />
-    			<span asp-validation-for="FruitModels.name" class="text-danger"></span>
+    			@* Render the name of the fruit in an editable text box. *@
+    			<InputText @bind-value="_fruitList!.name" />
     		</div>
     		<div class="mb-3">
-    			<label asp-for="FruitModels.instock" class="h5"></label><br/>
+    			<label  class="h5"></label><br/>
     			@* Render the true/false instock state from the record in an editable checkbox. *@
-    			<input type="checkbox" asp-for="FruitModels.instock" style="width:20px; height:20px" />
+    			<InputCheckbox @bind-value="_fruitList!.instock" style="width:20px; height:20px" />
     			<label class="h7"><i class="bi bi-arrow-left"></i>  Check the box if available.</label>
-    			<span asp-validation-for="FruitModels.instock" class="text-danger"></span>
     		</div>
-    		@* Submit the changes or return to the Index page if the edit is cancelled.*@
-    		<button type="submit" class="btn btn-primary" style="width:150px;">Update</button>
-    		<a asp-page="Index" class="btn btn-secondary" style="width:150px;">Cancel</a>
+    		@* Submit the changes or return to the Index page if the Edit is cancelled.*@
+    		<button type="submit" class="btn btn-danger " style="width:150px;">Save</button>
+    		<a class="btn btn-secondary" style="width:150px;" href="/">Cancel</a>
     	</div>
-    </form>
+    </EditForm>
     ```
 
-1. Save the changes to *Edit.cshtml*, and review the comments in the code.
+1. Save the changes to *Edit.razor*, and review the comments in the code.
 
 1. In the Visual Studio Code top menu select **Run \| Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
 
@@ -270,15 +265,16 @@ In this section you add code to create a form in the *Delete.cshtml* file to ena
 
 ### Task 1: Add code for the delete form
 
-1. Select the *Delete.cshtml* file in the  **Explorer** pane to open it for editing.
+1. Select the *Delete.razor* file in the  **Explorer** pane to open it for editing.
 
 1. Add the following code between the `@* Begin render Delete code block *@` and `@* End render Delete code block *@` comments.
 
     ```csharp
-    <form method="post">
-    	@* 	The id for the data record is hidden because it needs to be avaialable to the 
+    @* Data is deleted using a Razor form, the data model is bound to the form.*@
+    <EditForm OnSubmit="Submit" FormName="DeleteFruit" Model="_fruitList">
+    	@* 	The id for the data record is hidden because it needs to be available to the 
     		code-behind processing, but it's not displayed. *@
-        <input hidden asp-for="FruitModels.id" />
+        <InputNumber hidden="true" @bind-value="_fruitList!.id" />
     	<div class="border p-3 mt-4" style="width:50%">
     		<div class="row pb-2">
     			<h2 class="text-primary pl-3">Delete Fruit</h2>
@@ -287,23 +283,22 @@ In this section you add code to create a form in the *Delete.cshtml* file to ena
     		<div class="mb-3">
     			<label asp-for="FruitModels.name" class="h5"></label><br/>
     			@* Render the name of the fruit in a non-editable text box. *@
-    			<input type="text" asp-for="FruitModels.name" disabled/>
-    			<span asp-validation-for="FruitModels.name" class="text-danger"></span>
+    			<InputText @bind-value="_fruitList!.name" Disabled/>
     		</div>
     		<div class="mb-3">
-    			<label asp-for="FruitModels.instock" class="h5"></label><br/>
+    			<label  class="h5"></label><br/>
     			@* Render the true/false instock state from the record in a non-editable checkbox. *@
-    			<input type="checkbox" asp-for="FruitModels.instock" style="width:20px; height:20px" disabled  />
-    			<span asp-validation-for="FruitModels.instock" class="text-danger"></span>
+    			<InputCheckbox @bind-value="_fruitList!.instock" style="width:20px; height:20px" Disabled  />
+    			<label class="h7">Check the box if available.</label>
     		</div>
     		@* Submit the changes or return to the Index page if the delete is cancelled.*@
     		<button type="submit" class="btn btn-danger " style="width:150px;">Delete</button>
-    		<a asp-page="Index" class="btn btn-secondary" style="width:150px;">Cancel</a>
+    		<a class="btn btn-secondary" style="width:150px;" href="/">Cancel</a>
     	</div>
-    </form>
+    </EditForm>
     ```
 
-1. Save the changes to *Delete.cshtml*, and review the comments in the code.
+1. Save the changes to *Delete.razor*, and review the comments in the code.
 
 1. In the Visual Studio Code top menu select **Run \| Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
 
