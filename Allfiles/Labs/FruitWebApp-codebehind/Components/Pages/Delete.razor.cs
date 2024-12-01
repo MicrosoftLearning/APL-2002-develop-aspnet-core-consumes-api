@@ -50,23 +50,6 @@ public partial class Delete : ComponentBase
     }
 
     // Begin DELETE operation code
-    private async Task Submit()
-    {
-        // Create the HTTP client using the FruitAPI named factory
-        var httpClient = HttpClientFactory.CreateClient("FruitAPI");
 
-        // Execute the DELETE request and store the response
-        using HttpResponseMessage response = await httpClient.DeleteAsync("/fruits/" + Id.ToString());
-
-        // Return to the home page 
-        if (response.IsSuccessStatusCode)
-        {
-            NavigationManager?.NavigateTo("/");
-        }
-        else
-        {
-            Console.WriteLine("Failed to delete fruit. Status code: {response.StatusCode}");
-        }
-    }
     // End DELETE operation code
 }
