@@ -5,6 +5,7 @@
 @* Note: Many of the "class=" instances reference Bootstrap styles. *@
 
 @* Begin render Add code block *@
+@* Data is added using a Razor form, the data model is bound to the form.*@
 <EditForm OnSubmit="Submit" FormName="AddFruit" Model="_fruitList">
 	@* 	The _fruitList.id is here so the full data model is represented on the page.
 		The database behind the API will assign the id. *@
@@ -23,7 +24,7 @@
 			<label class="h5"></label><br />
 			@* Render the true/false instock state from the record in an editable checkbox. *@
 			<InputCheckbox @bind-value="_fruitList!.instock" style="width:20px; height:20px" />
-			<label class="h7"><i class="bi bi-arrow-left" /> Check the box if it's available.</label>
+			<label class="h7">Check the box if it's available.</label>
 		</div>
 		@* Submit the addition or return to the Index page if the Add is cancelled.*@
 		<button @onclick="() => Submit()" class="btn btn-primary" style="width:150px;">Create</button>

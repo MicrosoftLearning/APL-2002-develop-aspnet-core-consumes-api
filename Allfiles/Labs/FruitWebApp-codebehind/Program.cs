@@ -7,7 +7,12 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 // Begin HTTP client code
-
+// Add IHttpClientFactory to the container and set the name of the factory
+// to "FruitAPI". The base address for API requests is also set.
+builder.Services.AddHttpClient("FruitAPI", httpClient =>
+{
+    httpClient.BaseAddress = new Uri("http://localhost:5050/");
+});
 // End of HTTP client code
 
 

@@ -14,14 +14,13 @@
         </div>
     </div>
 
-    @*  The div below handles the display of temporary messages. In this 
-        project it displays the success/failure of an HTTP operation. *@
+    @*  The div below contains the Add button. *@
     
     <div class="container pt-4">
         <div class="row" style="width:80%">
             <div class="col text-end pb-4">
                 <a class="btn btn-primary mx-2 text-end" href="/add" >
-                    <i class="bi bi-plus-square"></i> &nbsp;Add to list
+                    Add to list
                 </a>
             </div>
         </div>
@@ -39,27 +38,25 @@
 
         @* Begin render API data code block *@
         <tbody>
-            
-            @*  The Razor keyword @foreach is used to iterate through the
+            @*  The Razor explicit expression @foreach is used to iterate through the
                 data returned to the data model from the HTTP operations. *@
             @foreach (var obj in _fruitList ?? [])
             {
                 <tr>
                     @* Display the name of the fruit. *@
                     <td width="50%">@obj.name</td>
-                    @*  The following if statment changes the color and icon of the available 
-                        indicator in the page rendering. *@
+                    @*  The following if statment changes the true/false of instock to Yes/No. *@
                     @{
                         if (@obj.instock)
                         {
                             <td width="20%" class="text-md-center">
-                                <i class="bi bi-check-circle" style="font-size: 1rem; color: green;"></i>&nbsp;Yes
+                                Yes
                             </td>
                         }
                         else
                         {
                             <td width="20%" class="text-md-center">
-                                <i class="bi bi-dash-circle" style="font-size: 1rem; color:red;"></i>&nbsp;No
+                                No
                             </td>
                         }
                     }
@@ -68,10 +65,10 @@
                            to a function that handles the navigation and passes the Id to the page. *@
                         <div class="w-75 btn-group btn-group-sm" role="group" style="text-align:center">
                             <button class="btn btn-primary  mx-2" @onclick="() => EditButton(obj.id)">
-                                <i class="bi bi-pencil-square"></i> Edit
+                                Edit
                             </button>
                             <button class="btn btn-danger mx-2" @onclick="() => DeleteButton(obj.id)">
-                                <i class="bi bi-trash" /> Delete
+                                Delete
                             </button>
                         </div>
                     </td>

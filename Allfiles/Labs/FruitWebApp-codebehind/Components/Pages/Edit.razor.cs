@@ -51,6 +51,27 @@ public partial class Edit : ComponentBase
     }
 
     // Begin PUT operation code
+    private async Task Submit()
+    {
+        // Create the HTTP client using the FruitAPI named factory
+        var httpClient = HttpClientFactory.CreateClient("FruitAPI");
 
+        // Store the updated data in a JSON object
+        var jsonContent = new StringContent(JsonSerializer.Serialize(_fruitList), 
+            Encoding.UTF8, "application/json");
+
+        // Execute the PUT request
+        using HttpResponseMessage response = await httpClient.PutAsync($"/fruits/{Id}", jsonContent);
+
+        // If the response is successful, navigate back to the home page 
+        if (response.IsSuccessStatusCode)
+        {
+            NavigationManager?.NavigateTo("/");
+        }
+        else
+        {
+            Console.WriteLine("Failed to update fruit with edits. Status code: {response.StatusCode}");
+        }
+    }
     // End PUT operation code
 }
