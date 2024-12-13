@@ -15,7 +15,6 @@ public partial class Home : ComponentBase
     private NavigationManager? NavigationManager { get; set; }
 
     /* Add the data model, enumerable since an array is expected as a response */
-
     private IEnumerable<FruitModel>? _fruitList;
 
     // Begin GET operation code
