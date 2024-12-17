@@ -1,17 +1,17 @@
 ---
 lab:
-    title: 'Exercise: Implement HTTP operations in ASP.NET Core Blazor apps'
-    module: 'Module: Implement HTTP operations in ASP.NET Core Blazor apps'
+    title: 'Exercise: Implement HTTP operations in ASP.NET Core Blazor Web apps'
+    module: 'Module: Implement HTTP operations in ASP.NET Core Blazor Web apps'
 ---
 
-In this exercise, you learn how to add code to an ASP.NET Core Blazor  app to create the HTTP client and perform `GET`, `POST`, `PUT`, and `DELETE` operations. This code is added to the *.razor.cs* code-behind files. The code to render the data in the *.razor* files is complete.
+In this exercise, you learn how to add code to an ASP.NET Core Blazor Web app to create the HTTP client and perform `GET`, `POST`, `PUT`, and `DELETE` operations. This code is added to the *.razor.cs* code-behind files. The code to render the data in the *.razor* files is complete.
 
 ## Objectives
 
 After you complete this exercise, you will be able to:
 
 * Implement `IHttpClientFactory` as the HTTP client
-* Implement HTTP operations in ASP.NET Blazor apps
+* Implement HTTP operations in ASP.NET Blazor Web apps
 
 ## Prerequisites
 

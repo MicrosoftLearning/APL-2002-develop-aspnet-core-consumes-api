@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Exercise: Render API responses in ASP.NET Core Blazor apps'
-    module: 'Module: Render API responses in ASP.NET Core Blazor apps'
+    title: 'Exercise: Render API responses in ASP.NET Core Blazor Web apps'
+    module: 'Module: Render API responses in ASP.NET Core Blazor Web apps'
 ---
 
-In this exercise, you learn how to add code to an ASP.NET Core Blazor app to render results from HTTP operations. This code is added to the *.razor* files. The code that performs the operations in the *.razor.cs* files is complete.
+In this exercise, you learn how to add code to an ASP.NET Core Blazor Web app to render results from HTTP operations. This code is added to the *.razor* files. The code that performs the operations in the *.razor.cs* files is complete.
 
 ## Objectives
 
