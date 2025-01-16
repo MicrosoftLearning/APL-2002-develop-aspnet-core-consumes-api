@@ -242,7 +242,9 @@ The tool will create the necessary resources in Azure and compile the code.
 
 1. When the deployment has completed a new pop-up will appear with the option to **Browse Website**, select **Browse Website**.
 
-1. In the browser window that opens add `/swagger` to the end of the URL. 
+1. In the browser window that opens you may need to add `/fruits` to the end of the URL. You will see the raw output from the API showing all of the data.
+
+    >**NOTE:** The Swagger UI is disabled because it is only enabled for development environments. Deploying to App Service is considered a non-dev environment unless you perform additional configuration.
 
 Congratulations, you have successfully deployed the API to Azure App Service.
 
