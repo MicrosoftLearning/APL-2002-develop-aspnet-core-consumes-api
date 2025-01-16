@@ -24,31 +24,41 @@ using (var scope = app.Services.CreateScope())
     dbContext.Database.EnsureCreated();
 }
 
- app.MapGet("/fruitlist",  async (FruitDb db) =>
-    await db.Fruits.ToListAsync())
-    .WithTags("Get all fruit"); 
+app.MapGet("/", context =>
+{
+    context.Response.Redirect("/fruits");
+    return Task.CompletedTask;
+});
 
-app.MapGet("/fruitlist/instock", async (FruitDb db) =>
-    await db.Fruits.Where(t => t.Instock).ToListAsync())
-    .WithTags("Get all fruit that is in stock");
+app.MapGet("/fruits", static async (FruitDb db) =>
+        await db.Fruits.ToListAsync() ?? [])
+    .Produces<Fruit[]>(200)
+    .WithTags("get", "fruits")
+    .WithSummary("Get all fruits");
 
-app.MapGet("/fruitlist/{id}", async (int id, FruitDb db) =>
+app.MapGet("/fruits/{id}", static async (int id, FruitDb db) =>
     await db.Fruits.FindAsync(id)
         is Fruit fruit
             ? Results.Ok(fruit)
             : Results.NotFound())
-    .WithTags("Get fruit by Id");
+    .Produces<Fruit>(200)
+    .Produces(404)
+    .WithTags("get", "fruit")
+    .WithSummary("Get a fruit by Id");
 
-app.MapPost("/fruitlist", async (Fruit fruit, FruitDb db) =>
+app.MapPost("/fruits", async (Fruit fruit, FruitDb db) =>
 {
     db.Fruits.Add(fruit);
     await db.SaveChangesAsync();
 
-    return Results.Created($"/fruitlist/{fruit.Id}", fruit);
+    return Results.Created($"/{fruit.Id}", fruit);
 })
-    .WithTags("Add fruit to list");
+    .Produces<Fruit>(201)
+    .WithTags("post", "fruits")
+    .WithSummary("Create a new fruit");
 
-app.MapPut("/fruitlist/{id}", async (int id, Fruit inputFruit, FruitDb db) =>
+
+app.MapPut("/fruits/{id}", async (int id, Fruit inputFruit, FruitDb db) =>
 {
     var fruit = await db.Fruits.FindAsync(id);
 
@@ -61,9 +71,12 @@ app.MapPut("/fruitlist/{id}", async (int id, Fruit inputFruit, FruitDb db) =>
 
     return Results.NoContent();
 })
-    .WithTags("Update fruit by Id");
+    .Produces(204)
+    .WithTags("put", "fruits")
+    .WithSummary("Update a fruit by Id");
 
-app.MapDelete("/fruitlist/{id}", async (int id, FruitDb db) =>
+
+app.MapDelete("/fruits/{id}", async (int id, FruitDb db) =>
 {
     if (await db.Fruits.FindAsync(id) is Fruit fruit)
     {
@@ -74,11 +87,14 @@ app.MapDelete("/fruitlist/{id}", async (int id, FruitDb db) =>
 
     return Results.NotFound();
 })
-    .WithTags("Delete fruit by Id");
+    .Produces<Fruit>(200)
+    .WithTags("delete", "fruits")
+    .WithSummary("Delete a fruit by Id");
 
-
-app.UseSwagger();
-app.UseSwaggerUI();
-
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.Run();

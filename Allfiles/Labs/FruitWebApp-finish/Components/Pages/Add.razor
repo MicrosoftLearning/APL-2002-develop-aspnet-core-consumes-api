@@ -1,0 +1,34 @@
+@page "/add"
+
+<PageTitle>Add</PageTitle>
+
+@* Note: Many of the "class=" instances reference Bootstrap styles. *@
+
+@* Begin render Add code block *@
+@* Data is added using a Razor form, the data model is bound to the form.*@
+<EditForm OnSubmit="Submit" FormName="AddFruit" Model="_fruitList">
+	@* 	The _fruitList.id is here so the full data model is represented on the page.
+		The database behind the API will assign the id. *@
+	<InputNumber hidden="true" @bind-Value="_fruitList!.id" />
+	<div class="border p-3 mt-4" style="width:50%">
+		<div class="row pb-2">
+			<h2 class="text-primary pl-3">Add Fruit</h2>
+			<hr />
+		</div>
+		<div class="mb-3">
+			<label class="h5"></label><br />
+			@* Empty text box for the name of the fruit to be added. *@
+			<InputText @bind-Value="_fruitList!.name" />
+		</div>
+		<div class="mb-3">
+			<label class="h5"></label><br />
+			@* Render the true/false instock state from the record in an editable checkbox. *@
+			<InputCheckbox @bind-value="_fruitList!.instock" style="width:20px; height:20px" />
+			<label class="h7">Check the box if it's available.</label>
+		</div>
+		@* Submit the addition or return to the Index page if the Add is cancelled.*@
+		<button @onclick="() => Submit()" class="btn btn-primary" style="width:150px;">Create</button>
+		<a class="btn btn-secondary" style="width:150px;" href="/">Cancel</a>
+	</div>
+</EditForm>
+@* End render Add code block *@

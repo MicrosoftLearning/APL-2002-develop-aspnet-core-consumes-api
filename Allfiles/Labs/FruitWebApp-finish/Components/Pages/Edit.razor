@@ -1,0 +1,37 @@
+@page "/edit/{Id:int}"
+
+@* Setting the rendermode of the page to InteractiveService preserves the state of changes of the values. *@
+@rendermode InteractiveServer
+
+<PageTitle>Edit page</PageTitle>
+
+@* Note: Many of the "class=" instances reference Bootstrap styles. *@
+
+@* Begin render Edit code block *@
+@* Data is edited using a Razor form, the data model is bound to the form.*@
+<EditForm OnSubmit="Submit" FormName="EditFruit" Model="_fruitList">
+	@* 	The id for the data record is hidden because it needs to be available to the 
+		code-behind processing, but it's not displayed. *@
+    <InputNumber hidden="true" @bind-Value="_fruitList!.id" />
+	<div class="border p-3 mt-4" style="width:50%">
+		<div class="row pb-2">
+			<h2 class="text-primary pl-3">Edit Fruit</h2>
+			<hr />
+		</div>
+		<div class="mb-3">
+			<label asp-for="FruitModels.name" class="h5"></label><br/>
+			@* Render the name of the fruit in an editable text box. *@
+			<InputText @bind-value="_fruitList!.name" />
+		</div>
+		<div class="mb-3">
+			<label  class="h5"></label><br/>
+			@* Render the true/false instock state from the record in an editable checkbox. *@
+			<InputCheckbox @bind-value="_fruitList!.instock" style="width:20px; height:20px" />
+			<label class="h7"><i class="bi bi-arrow-left"></i>  Check the box if available.</label>
+		</div>
+		@* Submit the changes or return to the Index page if the Edit is cancelled.*@
+		<button type="submit" class="btn btn-danger " style="width:150px;">Save</button>
+		<a class="btn btn-secondary" style="width:150px;" href="/">Cancel</a>
+	</div>
+</EditForm>
+@* End render Delete code block *@

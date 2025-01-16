@@ -1,24 +1,24 @@
 ---
 lab:
-    title: 'Exercise: Implement HTTP operations in ASP.NET Core Razor Pages'
-    module: 'Module: Implement HTTP operations in ASP.NET Core Razor Pages'
+    title: 'Exercise: Implement HTTP operations in ASP.NET Core Blazor Web apps'
+    module: 'Module: Implement HTTP operations in ASP.NET Core Blazor Web apps'
 ---
 
-In this exercise, you learn how to add code to an ASP.NET Core Razor Pages app to create the HTTP client and perform `GET`, `POST`, `PUT`, and `DELETE` operations. This code is added to the *.cshtml.cs* code-behind files. The code to render the data in the *.cshtml* files is complete.
+In this exercise, you learn how to add code to an ASP.NET Core Blazor Web app to create the HTTP client and perform `GET`, `POST`, `PUT`, and `DELETE` operations. This code is added to the *.razor.cs* code-behind files. The code to render the data in the *.razor* files is complete.
 
 ## Objectives
 
 After you complete this exercise, you will be able to:
 
 * Implement `IHttpClientFactory` as the HTTP client
-* Implement HTTP operations in ASP.NET Core Razor Pages
+* Implement HTTP operations in ASP.NET Blazor Web apps
 
 ## Prerequisites
 
 To complete the exercise you need to have the following installed on your system:
 
 * [Visual Studio Code](https://code.visualstudio.com)
-* [The latest .NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0)
+* [The latest .NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 * [The C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) for Visual Studio Code
 
 **Estimated exercise completion time**: 30 minutes
@@ -27,8 +27,8 @@ To complete the exercise you need to have the following installed on your system
 
 This exercise has two components:
 
-* An app that sends HTTP requests to an API. The app runs on `http://localhost:5010`
-* An API that responds to HTTP requests. The API runs on `http://localhost:5050`
+* An app that sends HTTP requests to an API. The web app runs on `http://localhost:5010`.
+* An API that responds to HTTP requests. The API runs on `http://localhost:5050`.
 
 ![Decorative](media/02-architecture.png)
 
@@ -108,7 +108,7 @@ The Fruit web app displays the API sample data on the home page. You need to add
     // to "FruitAPI". The base address for API requests is also set.
     builder.Services.AddHttpClient("FruitAPI", httpClient =>
     {
-        httpClient.BaseAddress = new Uri("http://localhost:5050/fruitlist/");
+        httpClient.BaseAddress = new Uri("http://localhost:5050/");
     });
     ```
 
@@ -116,33 +116,37 @@ The Fruit web app displays the API sample data on the home page. You need to add
 
 ### Task 2: Implement the GET operation
 
-1. Select the *Index.cshtml.cs* file in the  **Explorer** pane to open it for editing.
+1. Select the *home.razor.cs* file in the  **Explorer** pane to open it for editing. It is located in the `Components/Pages` folder.
 
 1. Add the following code between the `// Begin GET operation code` and `// End GET operation code` comments.
 
     ```csharp
-    // OnGet() is async since HTTP requests should be performed async
-      public async Task OnGet()
-      {
-          // Create the HTTP client using the FruitAPI named factory
-          var httpClient = _httpClientFactory.CreateClient("FruitAPI");
+    protected override async Task OnInitializedAsync()
+    {
+        // Create the HTTP client using the FruitAPI named factory
+        var httpClient = HttpClientFactory.CreateClient("FruitAPI");
 
-          // Perform the GET request and store the response. The empty parameter
-          // in GetAsync doesn't modify the base address set in the client factory 
-          using HttpResponseMessage response = await httpClient.GetAsync("");
+        // Perform the GET request and store the response. The parameter
+        // in GetAsync specifies the endpoint in the API 
+        using HttpResponseMessage response = await httpClient.GetAsync("/fruits");
 
-          // If the request is successful deserialize the results into the data model
-          if (response.IsSuccessStatusCode)
-          {
-              using var contentStream = await response.Content.ReadAsStreamAsync();
-              FruitModels = await JsonSerializer.DeserializeAsync<IEnumerable<FruitModel>>(contentStream);
-          }
-      }
+        // If the request is successful deserialize the results into the data model
+        if (response.IsSuccessStatusCode)
+        {
+            using var contentStream = await response.Content.ReadAsStreamAsync();
+            _fruitList = await JsonSerializer.DeserializeAsync<IEnumerable<FruitModel>>(contentStream);
+        }
+        else
+        {
+            // If the request is unsuccessful, log the error message
+            Console.WriteLine($"Failed to load fruit list. Status code: {response.StatusCode}");
+        }
+    }
     ```
 
-1. Save the changes to *Index.cshtml.cs*.
+1. Save the changes to *Home.razor.cs*.
 
-1. Review the code in the *Index.cshtml.cs* file. Note where the `IHttpClientFactory` is added to the page with dependency injection. Also note that the data model is bound to the page by using the `[BindProperty]` attribute.
+1. Review the code in the *Home.razor.cs* file. Note where the `IHttpClientFactory` is added to the page with dependency injection.
 
 ### Task 3: Run the web app
 
@@ -164,137 +168,123 @@ In this section you add code to the project to enable the **Add to list**, **Edi
 
 ### Task 1: Implement the POST operation
 
-1. Select the *Add.cshtml.cs* file in the  **Explorer** pane to open it for editing.
+1. Select the *Add.razor.cs* file in the  **Explorer** pane to open it for editing.
 
 1. Add the following code between the `// Begin POST operation code` and `// End POST operation code` comments.
 
     ```csharp
-    public async Task<IActionResult> OnPost()
+    private async Task Submit()
     {
         // Serialize the information to be added to the database
-        var jsonContent = new StringContent(JsonSerializer.Serialize(FruitModels),
+        var jsonContent = new StringContent(JsonSerializer.Serialize(_fruitList),
             Encoding.UTF8,
             "application/json");
-    
+
         // Create the HTTP client using the FruitAPI named factory
-        var httpClient = _httpClientFactory.CreateClient("FruitAPI");
-    
-        // Execute the POST request and store the response. The parameters in PostAsync 
-        // direct the POST to use the base address and passes the serialized data to the API
-        using HttpResponseMessage response = await httpClient.PostAsync("", jsonContent);
-    
-        // Return to the home (Index) page and add a temporary success/failure 
-        // message to the page.
+        var httpClient = HttpClientFactory.CreateClient("FruitAPI");
+
+        // Execute the POST request and store the response. The response will contain the new record's ID
+        using HttpResponseMessage response = await httpClient.PostAsync("/fruits", jsonContent);
+
+        // Check if the operation was successful, and navigate to the home page if it was
         if (response.IsSuccessStatusCode)
         {
-            TempData["success"] = "Data was added successfully.";
-            return RedirectToPage("Index");
+            NavigationManager?.NavigateTo("/");
         }
         else
         {
-            TempData["failure"] = "Operation was not successful";
-            return RedirectToPage("Index");
+            Console.WriteLine("Failed to add fruit. Status code: {response.StatusCode}");
         }
     }
     ```
 
-1. Save the changes to *Add.cshtml.cs*, and review the comments in the code.
+1. Save the changes to *Add.razor.cs*, and review the comments in the code.
 
 1. In the Visual Studio Code top menu select **Run \| Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
 
 1. Select the **Add to list** button and fill in the generated the form. Then select the **Create** button.
 
-1. Verify that your addition appears at the bottom of the list. The success/failure message near the top of the page will notify you if there was an issue.
+1. Verify that your addition appears at the bottom of the list.
 
 1. To continue with the exercise close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
 
 ### Task 1: Implement the PUT operation
 
-1. Select the *Edit.cshtml.cs* file in the  **Explorer** pane to open it for editing.
+1. Select the *Edit.razor.cs* file in the  **Explorer** pane to open it for editing.
 
 1. Add the following code between the `// Begin PUT operation code` and `// End PUT operation code` comments.
 
     ```csharp
-    public async Task<IActionResult> OnPost()
+    private async Task Submit()
+    {
+        // Create the HTTP client using the FruitAPI named factory
+        var httpClient = HttpClientFactory.CreateClient("FruitAPI");
+
+        // Store the updated data in a JSON object
+        var jsonContent = new StringContent(JsonSerializer.Serialize(_fruitList), 
+            Encoding.UTF8, "application/json");
+
+        // Execute the PUT request
+        using HttpResponseMessage response = await httpClient.PutAsync($"/fruits/{Id}", jsonContent);
+
+        // If the response is successful, navigate back to the home page 
+        if (response.IsSuccessStatusCode)
         {
-            // Serialize the information to be edited in the database
-            var jsonContent = new StringContent(JsonSerializer.Serialize(FruitModels),
-                Encoding.UTF8,
-                "application/json");
-    
-            // Create the HTTP client using the FruitAPI named factory
-            var httpClient = _httpClientFactory.CreateClient("FruitAPI");
-    
-            // Execute the PUT request and store the response. The parameters in PutAsync 
-            // appends the item Id to the base address and passes the serialized data to the API
-            using HttpResponseMessage response = await httpClient.PutAsync(FruitModels.id.ToString(), jsonContent);
-    
-            // Return to the home (Index) page and add a temporary success/failure 
-            // message to the page.
-            if (response.IsSuccessStatusCode)
-            {
-                TempData["success"] = "Data was edited successfully.";
-                return RedirectToPage("Index");
-            }
-            else
-            {
-                TempData["failure"] = "Operation was not successful";
-                return RedirectToPage("Index");
-            }
-    
+            NavigationManager?.NavigateTo("/");
         }
+        else
+        {
+            Console.WriteLine("Failed to update fruit with edits. Status code: {response.StatusCode}");
+        }
+    }
     ```
 
-1. Save the changes to *Edit.cshtml.cs*, and review the comments in the code.
+1. Save the changes to *Edit.razor.cs*, and review the comments in the code.
 
 1. In the Visual Studio Code top menu select **Run \| Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
 
 1. Choose an item in the list to edit and select the **Edit** button. 
 1. Edit the **Fruit Name** and the **Available?** field, then select **Update**.
 
-1. Verify that your changes appear in the list. The success/failure message near the top of the page will notify you if there was an issue.
+1. Verify that your changes appear in the list. 
 
 1. To continue with the exercise close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
 
 ### Task 1: Implement the DELETE operation
 
-1. Select the *Delete.cshtml.cs* file in the  **Explorer** pane to open it for editing.
+1. Select the *Delete.razor.cs* file in the  **Explorer** pane to open it for editing.
 
 1. Add the following code between the `// Begin DELETE operation code` and `// End DELETE operation code` comments.
 
     ```csharp
-    public async Task<IActionResult> OnPost()
+    private async Task Submit()
     {
         // Create the HTTP client using the FruitAPI named factory
-        var httpClient = _httpClientFactory.CreateClient("FruitAPI");
-    
-        // Appends the data Id for deletion to the base address and performs the operation
-        using HttpResponseMessage response = await httpClient.DeleteAsync(FruitModels.id.ToString());
-    
-        // Return to the home (Index) page and add a temporary success/failure 
-        // message to the page.
+        var httpClient = HttpClientFactory.CreateClient("FruitAPI");
+
+        // Execute the DELETE request and store the response
+        using HttpResponseMessage response = await httpClient.DeleteAsync("/fruits/" + Id.ToString());
+
+        // Return to the home page 
         if (response.IsSuccessStatusCode)
         {
-            TempData["success"] = "Data was deleted successfully.";
-            return RedirectToPage("Index");
+            NavigationManager?.NavigateTo("/");
         }
         else
         {
-            TempData["failure"] = "Operation was not successful";
-            return RedirectToPage("Index");
+            Console.WriteLine("Failed to delete fruit. Status code: {response.StatusCode}");
         }
-    
     }
     ```
 
-1. Save the changes to *Delete.cshtml.cs*, and review the comments in the code.
+1. Save the changes to *Delete.razor.cs*, and review the comments in the code.
 
 1. In the Visual Studio Code top menu select **Run \| Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
 
 1. Choose an item in the list to delete and select the **Delete** button.
 2. On the Delete page, verify that the item you selected is displayed, and click the **Delete** button.
 
-1. Verify that the item no longer appears in the list. The success/failure message near the top of the page will notify you if there was an issue.
+1. Verify that the item no longer appears in the list.
 
 When you are ready to end the exercise:
 
@@ -307,4 +297,4 @@ When you are ready to end the exercise:
 In this exercise you learned how to:
 
 * Implement `IHttpClientFactory` as the HTTP client
-* Implement HTTP operations in ASP.NET Core Razor Pages code-behind files
+* Implement HTTP operations in ASP.NET Core Blazor code-behind files

@@ -1,0 +1,34 @@
+﻿@page "/delete/{Id:int}"
+
+<PageTitle>Delete page</PageTitle>
+
+@* Note: Many of the "class=" instances reference Bootstrap styles. *@
+
+@* Begin render Delete code block *@
+@* Data is deleted using a Razor form, the data model is bound to the form.*@
+<EditForm OnSubmit="Submit" FormName="DeleteFruit" Model="_fruitList">
+	@* 	The id for the data record is hidden because it needs to be available to the 
+		code-behind processing, but it's not displayed. *@
+    <InputNumber hidden="true" @bind-Value="_fruitList!.id" />
+	<div class="border p-3 mt-4" style="width:50%">
+		<div class="row pb-2">
+			<h2 class="text-primary pl-3">Delete Fruit</h2>
+			<hr />
+		</div>
+		<div class="mb-3">
+			<label asp-for="FruitModels.name" class="h5"></label><br/>
+			@* Render the name of the fruit in a non-editable text box. *@
+			<InputText @bind-value="_fruitList!.name" Disabled/>
+		</div>
+		<div class="mb-3">
+			<label  class="h5"></label><br/>
+			@* Render the true/false instock state from the record in a non-editable checkbox. *@
+			<InputCheckbox @bind-value="_fruitList!.instock" style="width:20px; height:20px" Disabled  />
+			<label class="h7">Check the box if available.</label>
+		</div>
+		@* Submit the changes or return to the Index page if the delete is cancelled.*@
+		<button type="submit" class="btn btn-danger " style="width:150px;">Delete</button>
+		<a class="btn btn-secondary" style="width:150px;" href="/">Cancel</a>
+	</div>
+</EditForm>
+@* End render Delete code block *@

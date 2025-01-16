@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+
 
 namespace FruitWebApp.Models;
 

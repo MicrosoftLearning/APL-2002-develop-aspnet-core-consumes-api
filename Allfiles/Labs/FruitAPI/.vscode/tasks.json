@@ -35,7 +35,7 @@
             "args": [
                 "build",
                 "${workspaceFolder}/FruitAPI.sln",
-                "/property:GenerateFullPaths=true",
+                "/property:GenerateFullPaths=false",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
