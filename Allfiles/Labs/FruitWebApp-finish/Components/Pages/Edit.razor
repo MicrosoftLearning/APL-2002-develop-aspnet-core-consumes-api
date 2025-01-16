@@ -21,12 +21,12 @@
 		<div class="mb-3">
 			<label asp-for="FruitModels.name" class="h5"></label><br/>
 			@* Render the name of the fruit in an editable text box. *@
-			<InputText @bind-value="_fruitList!.name" />
+			<InputText @bind-Value="_fruitList!.name" />
 		</div>
 		<div class="mb-3">
 			<label  class="h5"></label><br/>
 			@* Render the true/false instock state from the record in an editable checkbox. *@
-			<InputCheckbox @bind-value="_fruitList!.instock" style="width:20px; height:20px" />
+			<InputCheckbox @bind-Value="_fruitList!.instock" style="width:20px; height:20px" />
 			<label class="h7"><i class="bi bi-arrow-left"></i>  Check the box if available.</label>
 		</div>
 		@* Submit the changes or return to the Index page if the Edit is cancelled.*@

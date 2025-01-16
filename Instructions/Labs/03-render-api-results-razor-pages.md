@@ -186,7 +186,7 @@ The add, edit, and delete operations are each handled on a separate *.razor* pag
     		<div class="mb-3">
     			<label class="h5"></label><br />
     			@* Render the true/false instock state from the record in an editable checkbox. *@
-    			<InputCheckbox @bind-value="_fruitList!.instock" style="width:20px; height:20px" />
+    			<InputCheckbox @bind-Value="_fruitList!.instock" style="width:20px; height:20px" />
     			<label class="h7">Check the box if it's available.</label>
     		</div>
     		@* Submit the addition or return to the Index page if the Add is cancelled.*@
@@ -232,12 +232,12 @@ In this section you add code to create a form in the *Edit.cshtml* file to enabl
     		<div class="mb-3">
     			<label asp-for="FruitModels.name" class="h5"></label><br/>
     			@* Render the name of the fruit in an editable text box. *@
-    			<InputText @bind-value="_fruitList!.name" />
+    			<InputText @bind-Value="_fruitList!.name" />
     		</div>
     		<div class="mb-3">
     			<label  class="h5"></label><br/>
     			@* Render the true/false instock state from the record in an editable checkbox. *@
-    			<InputCheckbox @bind-value="_fruitList!.instock" style="width:20px; height:20px" />
+    			<InputCheckbox @bind-Value="_fruitList!.instock" style="width:20px; height:20px" />
     			<label class="h7"><i class="bi bi-arrow-left"></i>  Check the box if available.</label>
     		</div>
     		@* Submit the changes or return to the Index page if the Edit is cancelled.*@
@@ -283,12 +283,12 @@ In this section you add code to create a form in the *Delete.cshtml* file to ena
     		<div class="mb-3">
     			<label asp-for="FruitModels.name" class="h5"></label><br/>
     			@* Render the name of the fruit in a non-editable text box. *@
-    			<InputText @bind-value="_fruitList!.name" Disabled/>
+    			<InputText @bind-Value="_fruitList!.name" Disabled/>
     		</div>
     		<div class="mb-3">
     			<label  class="h5"></label><br/>
     			@* Render the true/false instock state from the record in a non-editable checkbox. *@
-    			<InputCheckbox @bind-value="_fruitList!.instock" style="width:20px; height:20px" Disabled  />
+    			<InputCheckbox @bind-Value="_fruitList!.instock" style="width:20px; height:20px" Disabled  />
     			<label class="h7">Check the box if available.</label>
     		</div>
     		@* Submit the changes or return to the Index page if the delete is cancelled.*@

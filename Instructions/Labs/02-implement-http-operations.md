@@ -93,9 +93,9 @@ In this section you download the code for the Fruit web app and the Fruit API. Y
 
 >**Note:** Take time to review the code in each of the files being edited throughout this exercise. The code is heavily commented and can help you understand the code base.
 
-## Implement code for the HTTP client and `GET` operation
+## Implement code for the HTTP client and HTTP operations
 
-The Fruit web app displays the API sample data on the home page. You need to add code to implement both the HTTP client and `GET` operation so the web app will have data to display on the home page when you first build and run it.
+The Fruit web app displays the API sample data on the home page and has add, edit, and delete functionality. You need to add code to implement the HTTP client operations. 
 
 ### Task 1: Implement the HTTP client
 
@@ -148,25 +148,7 @@ The Fruit web app displays the API sample data on the home page. You need to add
 
 1. Review the code in the *Home.razor.cs* file. Note where the `IHttpClientFactory` is added to the page with dependency injection.
 
-### Task 3: Run the web app
-
-1. In the Visual Studio Code top menu select **Run \| Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running and displaying the API sample data as shown in the following screenshot.
-
-    ![Screenshot of the web app displaying the sample data.](media/02-web-app-get-sample-data.png)
-
-    >**Note:** Later in the exercise you add code to enable the add, edit, and delete functionality of the web app. 
-
-    >**Note:** You can safely ignore the prompt below if it appears when you run the app.
-
-    ![Screenshot of the prompt to install a self-signed certificate.](media/install-cert.png)
-
-1. To continue with the exercise close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
-
-## Implement code for the POST, PUT, and  DELETE operations
-
-In this section you add code to the project to enable the **Add to list**, **Edit**, and **Delete** functionality in the web app. 
-
-### Task 1: Implement the POST operation
+### Task 3: Implement the POST operation
 
 1. Select the *Add.razor.cs* file in the  **Explorer** pane to open it for editing.
 
@@ -200,15 +182,7 @@ In this section you add code to the project to enable the **Add to list**, **Edi
 
 1. Save the changes to *Add.razor.cs*, and review the comments in the code.
 
-1. In the Visual Studio Code top menu select **Run \| Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
-
-1. Select the **Add to list** button and fill in the generated the form. Then select the **Create** button.
-
-1. Verify that your addition appears at the bottom of the list.
-
-1. To continue with the exercise close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
-
-### Task 1: Implement the PUT operation
+### Task 4: Implement the PUT operation
 
 1. Select the *Edit.razor.cs* file in the  **Explorer** pane to open it for editing.
 
@@ -241,16 +215,7 @@ In this section you add code to the project to enable the **Add to list**, **Edi
 
 1. Save the changes to *Edit.razor.cs*, and review the comments in the code.
 
-1. In the Visual Studio Code top menu select **Run \| Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
-
-1. Choose an item in the list to edit and select the **Edit** button. 
-1. Edit the **Fruit Name** and the **Available?** field, then select **Update**.
-
-1. Verify that your changes appear in the list. 
-
-1. To continue with the exercise close the browser, or browser tab, and in Visual Studio Code select **Run \| Stop debugging** or **Shift + F5**.
-
-### Task 1: Implement the DELETE operation
+### Task 5: Implement the DELETE operation
 
 1. Select the *Delete.razor.cs* file in the  **Explorer** pane to open it for editing.
 
@@ -279,10 +244,32 @@ In this section you add code to the project to enable the **Add to list**, **Edi
 
 1. Save the changes to *Delete.razor.cs*, and review the comments in the code.
 
-1. In the Visual Studio Code top menu select **Run \| Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running
+## Run and test the web app
+
+### Task 1: Run the web app
+
+1. In the Visual Studio Code top menu select **Run \| Start debugging**, or select **F5**. After the project is finished building a browser window should launch with the web app running and displaying the API sample data as shown in the following screenshot.
+
+    ![Screenshot of the web app displaying the sample data.](media/02-web-app-get-sample-data.png)
+
+    >**Note:** You can safely ignore the prompt below if it appears when you run the app.
+
+    ![Screenshot of the prompt to install a self-signed certificate.](media/install-cert.png)
+
+### Task 1: Test the web app
+
+1. Select the **Add to list** button and fill in the generated the form. Then select the **Create** button.
+
+1. Verify that your addition appears at the bottom of the list.
+
+1. Choose an item in the list to edit and select the **Edit** button. 
+1. Edit the **Fruit Name** and the **Available?** field, then select **Update**.
+
+1. Verify that your changes appear in the list. 
 
 1. Choose an item in the list to delete and select the **Delete** button.
-2. On the Delete page, verify that the item you selected is displayed, and click the **Delete** button.
+
+1. On the Delete page, verify that the item you selected is displayed, and click the **Delete** button.
 
 1. Verify that the item no longer appears in the list.
 
