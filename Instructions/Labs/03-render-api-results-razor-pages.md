@@ -223,7 +223,7 @@ In this section you add code to create a form in the *Edit.cshtml* file to enabl
     <EditForm OnSubmit="Submit" FormName="EditFruit" Model="_fruitList">
     	@* 	The id for the data record is hidden because it needs to be available to the 
     		code-behind processing, but it's not displayed. *@
-        <InputNumber hidden="true" @bind-value="_fruitList!.id" />
+        <InputNumber hidden="true" @bind-Value="_fruitList!.id" />
     	<div class="border p-3 mt-4" style="width:50%">
     		<div class="row pb-2">
     			<h2 class="text-primary pl-3">Edit Fruit</h2>
@@ -274,7 +274,7 @@ In this section you add code to create a form in the *Delete.cshtml* file to ena
     <EditForm OnSubmit="Submit" FormName="DeleteFruit" Model="_fruitList">
     	@* 	The id for the data record is hidden because it needs to be available to the 
     		code-behind processing, but it's not displayed. *@
-        <InputNumber hidden="true" @bind-value="_fruitList!.id" />
+        <InputNumber hidden="true" @bind-Value="_fruitList!.id" />
     	<div class="border p-3 mt-4" style="width:50%">
     		<div class="row pb-2">
     			<h2 class="text-primary pl-3">Delete Fruit</h2>
